@@ -4,58 +4,69 @@ import * as path from 'path';
 import OpenAI from 'openai';
 import * as dotenv from 'dotenv';
 
-// 🔥 Force correct .env loading
-dotenv.config({
-	path: path.resolve(__dirname, '../.env')
-});
+// 🔥 Load environment variables (CORRECT for /out folder)
+const envPath = path.resolve(__dirname, '../.env');
+dotenv.config({ path: envPath });
 
+// 🔍 DEBUG
+console.log("ENV PATH:", envPath);
 console.log("API KEY LOADED:", process.env.OPENAI_API_KEY ? "YES" : "NO");
 
-// 🔹 AI function (real OpenAI integration)
+// 🔹 OpenAI (lazy + safe singleton)
+let openaiInstance: OpenAI | null = null;
 
-const openai = new OpenAI({
-	apiKey: process.env.OPENAI_API_KEY,
-});
+function getOpenAI(): OpenAI {
+	if (!process.env.OPENAI_API_KEY) {
+		throw new Error("OPENAI_API_KEY is missing");
+	}
 
-async function getAIResponse(code: string): Promise<string> {
-	const response = await openai.chat.completions.create({
-		model: "gpt-4o-mini",
-		messages: [
-			{
-				role: "system",
-				content: `
-You are a senior software engineer.
+	if (!openaiInstance) {
+		openaiInstance = new OpenAI({
+			apiKey: process.env.OPENAI_API_KEY,
+		});
+	}
 
-Explain the code clearly and concisely.
-
-Rules:
-- Use bullet points
-- Be short and precise
-- No unnecessary introductions
-- Focus on what the code does
-- Mention key concepts (loop, condition, function, etc.)
-`
-			},
-			{
-				role: "user",
-				content: `Explain this code:\n\n${code}`
-			}
-		],
-	});
-
-	return response.choices[0].message.content || "No response from AI";
+	return openaiInstance;
 }
 
+// 🔹 AI Function
+async function getAIResponse(code: string): Promise<string> {
+	try {
+		const openai = getOpenAI();
+
+		const response = await openai.responses.create({
+			model: "gpt-4.1-mini",
+			input: `Explain this code clearly:\n\n${code}`,
+		});
+
+		console.log("✅ FULL RESPONSE:", JSON.stringify(response, null, 2));
+
+		// 🔥 SAFE EXTRACTION
+		const text =
+			(response as any).output_text ||
+			(response as any).output?.[0]?.content?.[0]?.text ||
+			"⚠️ No response from AI";
+
+		console.log("✅ AI TEXT:", text);
+
+		return text;
+
+	} catch (error: any) {
+		console.error("🔥 AI ERROR FULL:", error);
+		console.error("🔥 MESSAGE:", error?.message);
+		console.error("🔥 STACK:", error?.stack);
+
+		return `❌ AI ERROR:\n\n${error?.message || "Unknown error"}`;
+	}
+}
+
+// 🔹 Extension Activation
 export function activate(context: vscode.ExtensionContext) {
 	console.log("🚨 ACTIVATE STARTED 🚨");
-	console.log("🔥 MundiCodeLens activate() fired");
-  	console.log("API KEY LOADED:", process.env.OPENAI_API_KEY ? "YES" : "NO");
 
 	const disposable = vscode.commands.registerCommand(
 		'mundicodelens-lite.helloWorld',
 		async () => {
-
-			console.log("Command triggered");
 
 			try {
 				const editor = vscode.window.activeTextEditor;
@@ -73,17 +84,23 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 
 				// 🔥 STATUS FEEDBACK
-				vscode.window.setStatusBarMessage('$(sync~spin) MundiCodeLens thinking...', 2000);
+				vscode.window.setStatusBarMessage(
+					'$(sync~spin) MundiCodeLens thinking...',
+					2000
+				);
 
 				const aiResponse = await getAIResponse(selectedText);
-
 				const cleanResponse = aiResponse.trim();
+
+				console.log("🚀 FINAL RESPONSE TO UI:", cleanResponse);
 
 				const panel = vscode.window.createWebviewPanel(
 					'mundiCodeLensPanel',
 					'MundiCodeLens Lite',
 					vscode.ViewColumn.Beside,
-					{}
+					{
+						enableScripts: true // 🔥 REQUIRED
+					}
 				);
 
 				panel.webview.html = getWebviewContent(
@@ -93,8 +110,10 @@ export function activate(context: vscode.ExtensionContext) {
 				);
 
 			} catch (error: any) {
+				console.error("🔥 EXTENSION ERROR:", error);
+
 				vscode.window.showErrorMessage(
-					'AI request failed: ' + (error.message || 'Unknown error')
+					`AI ERROR: ${error?.message || "Unknown error"}`
 				);
 			}
 		}
@@ -103,14 +122,41 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 }
 
-// 🔹 HTML UI (separated file approach)
-function getWebviewContent(context: vscode.ExtensionContext, response: string, code: string): string {
+// 🔹 HTML UI
+function getWebviewContent(
+	context: vscode.ExtensionContext,
+	response: string,
+	code: string
+): string {
+
 	const filePath = path.join(context.extensionPath, 'src', 'webview.html');
 
-	let html = fs.readFileSync(filePath, 'utf8');
+	console.log("WEBVIEW PATH:", filePath);
 
-	html = html.replace('{{response}}', response);
-	html = html.replace('{{code}}', code);
+	let html: string;
+
+	try {
+		html = fs.readFileSync(filePath, 'utf8');
+	} catch (err) {
+		console.error("FILE READ ERROR:", err);
+		return `<h2>File load failed</h2><pre>${filePath}</pre>`;
+	}
+
+	// 🔥 ESCAPE CODE (prevent HTML breaking)
+	const safeCode = code
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;");
+
+	// 🔥 ESCAPE RESPONSE (prevent script injection issues)
+	const safeResponse = response
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;");
+
+	// 🔥 GLOBAL REPLACEMENT (important!)
+	html = html.replace(/{{code}}/g, safeCode);
+	html = html.replace(/{{response}}/g, safeResponse);
 
 	return html;
 }

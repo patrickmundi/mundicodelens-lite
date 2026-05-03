@@ -2,25 +2,32 @@
 <html>
 <head>
   <meta charset="UTF-8">
+
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       background: #1e1e1e;
-      color: #ffffff;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
       padding: 20px;
     }
 
     h2 {
       color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      margin-top: 20px;
+      color: #cccccc;
     }
 
     .card {
       background: #2d2d2d;
       padding: 15px;
       border-radius: 10px;
+      border-left: 4px solid #4CAF50;
       margin-top: 10px;
       line-height: 1.6;
-	  border-left: 4px solid #4CAF50;
     }
 
     pre {
@@ -29,33 +36,77 @@
       border-radius: 8px;
       overflow-x: auto;
       color: #00ffcc;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
 
-    .section {
-      margin-bottom: 20px;
+    code {
+      font-family: Consolas, monospace;
     }
   </style>
 </head>
 
 <body>
 
-  <h2>🧠 MundiCodeLens Lite</h2>
+<h2>🧠 MundiCodeLens Lite</h2>
 
-  <div class="section">
-    <h3>📌 Code</h3>
-    <pre>{{code}}</pre>
-  </div>
-
-  <div class="section">
-  <h3>💡 Explanation</h3>
-  <div class="card" id="output"></div>
+<!-- ================= CODE ================= -->
+<h3>Code</h3>
+<div class="card">
+  <pre><code>{{code}}</code></pre>
 </div>
 
+<!-- ============== EXPLANATION ============== -->
+<h3>Explanation</h3>
+<div id="output" class="card">
+  <!-- ✅ FALLBACK (NEVER REMOVE) -->
+  <pre id="raw-response">{{response}}</pre>
+</div>
+
+<!-- ============== MARKDOWN ENGINE ============== -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <script>
-  const raw = `{{response}}`;
-  document.getElementById("output").innerHTML = marked.parse(raw);
+  document.addEventListener("DOMContentLoaded", () => {
+    try {
+      const container = document.getElementById("output");
+      const rawElement = document.getElementById("raw-response");
+
+      if (!container || !rawElement) {
+        console.error("❌ OUTPUT OR RAW ELEMENT NOT FOUND");
+        return;
+      }
+
+      const raw = rawElement.innerText;
+
+      if (!raw || raw.trim() === "") {
+        container.innerHTML = "<pre>⚠️ No explanation received.</pre>";
+        return;
+      }
+
+      // ⚙️ Configure markdown
+      marked.setOptions({
+        breaks: true,
+        gfm: true
+      });
+
+      // 🔥 Parse markdown
+      const parsed = marked.parse(raw);
+
+      // ✅ Replace only if valid
+      if (parsed && parsed.trim() !== "") {
+        container.innerHTML = parsed;
+      }
+
+    } catch (err) {
+      console.error("🔥 WEBVIEW RENDER ERROR:", err);
+
+      const container = document.getElementById("output");
+      if (container) {
+        container.innerHTML = "<pre>⚠️ Rendering error: " + err.message + "</pre>";
+      }
+    }
+  });
 </script>
 
 </body>
