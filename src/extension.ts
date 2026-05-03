@@ -4,7 +4,7 @@ import * as path from 'path';
 import OpenAI from 'openai';
 import * as dotenv from 'dotenv';
 
-// 🔥 Load environment variables (CORRECT for /out folder)
+// 🔥 Load environment variables
 const envPath = path.resolve(__dirname, '../.env');
 dotenv.config({ path: envPath });
 
@@ -12,7 +12,7 @@ dotenv.config({ path: envPath });
 console.log("ENV PATH:", envPath);
 console.log("API KEY LOADED:", process.env.OPENAI_API_KEY ? "YES" : "NO");
 
-// 🔹 OpenAI (lazy + safe singleton)
+// 🔹 OpenAI singleton
 let openaiInstance: OpenAI | null = null;
 
 function getOpenAI(): OpenAI {
@@ -41,7 +41,6 @@ async function getAIResponse(code: string): Promise<string> {
 
 		console.log("✅ FULL RESPONSE:", JSON.stringify(response, null, 2));
 
-		// 🔥 SAFE EXTRACTION
 		const text =
 			(response as any).output_text ||
 			(response as any).output?.[0]?.content?.[0]?.text ||
@@ -60,36 +59,73 @@ async function getAIResponse(code: string): Promise<string> {
 	}
 }
 
+// 🔥 CodeLens Provider
+class MundiCodeLensProvider implements vscode.CodeLensProvider {
+	provideCodeLenses(document: vscode.TextDocument): vscode.CodeLens[] {
+		const lenses: vscode.CodeLens[] = [];
+
+		for (let i = 0; i < document.lineCount; i++) {
+			const line = document.lineAt(i);
+
+			if (
+				line.text.includes("function") ||
+				line.text.includes("=>") ||
+				line.text.includes("const")
+			) {
+				const range = new vscode.Range(i, 0, i, 0);
+
+				lenses.push(
+					new vscode.CodeLens(range, {
+						title: "💡 Explain Code",
+						command: "mundicodelens-lite.helloWorld",
+						arguments: [document, i] // 🔥 PASS CONTEXT
+					})
+				);
+			}
+		}
+
+		return lenses;
+	}
+}
+
 // 🔹 Extension Activation
 export function activate(context: vscode.ExtensionContext) {
 	console.log("🚨 ACTIVATE STARTED 🚨");
 
 	const disposable = vscode.commands.registerCommand(
 		'mundicodelens-lite.helloWorld',
-		async () => {
+		async (doc?: vscode.TextDocument, lineNumber?: number) => {
 
 			try {
-				const editor = vscode.window.activeTextEditor;
+				let codeToExplain = "";
 
-				if (!editor) {
-					vscode.window.showErrorMessage('No active editor');
+				// 🔥 If triggered from CodeLens
+				if (doc && typeof lineNumber === "number") {
+					codeToExplain = doc.lineAt(lineNumber).text;
+				}
+				// 🔥 If triggered manually (fallback)
+				else {
+					const editor = vscode.window.activeTextEditor;
+
+					if (!editor) {
+						vscode.window.showErrorMessage('No active editor');
+						return;
+					}
+
+					codeToExplain = editor.document.getText(editor.selection);
+				}
+
+				if (!codeToExplain || codeToExplain.trim() === "") {
+					vscode.window.showInformationMessage('No code to explain');
 					return;
 				}
 
-				const selectedText = editor.document.getText(editor.selection);
-
-				if (!selectedText) {
-					vscode.window.showInformationMessage('No text selected');
-					return;
-				}
-
-				// 🔥 STATUS FEEDBACK
 				vscode.window.setStatusBarMessage(
 					'$(sync~spin) MundiCodeLens thinking...',
 					2000
 				);
 
-				const aiResponse = await getAIResponse(selectedText);
+				const aiResponse = await getAIResponse(codeToExplain);
 				const cleanResponse = aiResponse.trim();
 
 				console.log("🚀 FINAL RESPONSE TO UI:", cleanResponse);
@@ -98,15 +134,13 @@ export function activate(context: vscode.ExtensionContext) {
 					'mundiCodeLensPanel',
 					'MundiCodeLens Lite',
 					vscode.ViewColumn.Beside,
-					{
-						enableScripts: true // 🔥 REQUIRED
-					}
+					{ enableScripts: true }
 				);
 
 				panel.webview.html = getWebviewContent(
 					context,
 					cleanResponse,
-					selectedText
+					codeToExplain
 				);
 
 			} catch (error: any) {
@@ -120,6 +154,16 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 
 	context.subscriptions.push(disposable);
+
+	// 🔥 Register CodeLens
+	const provider = new MundiCodeLensProvider();
+
+	context.subscriptions.push(
+		vscode.languages.registerCodeLensProvider(
+			{ scheme: "file", language: "*" },
+			provider
+		)
+	);
 }
 
 // 🔹 HTML UI
@@ -142,19 +186,16 @@ function getWebviewContent(
 		return `<h2>File load failed</h2><pre>${filePath}</pre>`;
 	}
 
-	// 🔥 ESCAPE CODE (prevent HTML breaking)
 	const safeCode = code
 		.replace(/&/g, "&amp;")
 		.replace(/</g, "&lt;")
 		.replace(/>/g, "&gt;");
 
-	// 🔥 ESCAPE RESPONSE (prevent script injection issues)
 	const safeResponse = response
 		.replace(/&/g, "&amp;")
 		.replace(/</g, "&lt;")
 		.replace(/>/g, "&gt;");
 
-	// 🔥 GLOBAL REPLACEMENT (important!)
 	html = html.replace(/{{code}}/g, safeCode);
 	html = html.replace(/{{response}}/g, safeResponse);
 
