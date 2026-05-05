@@ -59,6 +59,61 @@ async function getAIResponse(code: string): Promise<string> {
 	}
 }
 
+// 🔥 FULL FUNCTION DETECTION
+function getFullFunction(
+	document: vscode.TextDocument,
+	position: vscode.Position
+): string {
+
+	let startLine = position.line;
+	let endLine = position.line;
+
+	while (startLine > 0) {
+		const text = document.lineAt(startLine).text.trim();
+
+		if (
+			text.startsWith("function") ||
+			text.startsWith("async function") ||
+			text.includes("=>") ||
+			text.startsWith("const") ||
+			text.startsWith("let")
+		) {
+			break;
+		}
+
+		startLine--;
+	}
+
+	let openBraces = 0;
+	let foundOpening = false;
+
+	for (let i = startLine; i < document.lineCount; i++) {
+		const lineText = document.lineAt(i).text;
+
+		if (lineText.includes("{")) {
+			openBraces++;
+			foundOpening = true;
+		}
+
+		if (lineText.includes("}")) {
+			openBraces--;
+		}
+
+		if (foundOpening && openBraces === 0) {
+			endLine = i;
+			break;
+		}
+	}
+
+	if (endLine < startLine) {
+		endLine = position.line;
+	}
+
+	const range = new vscode.Range(startLine, 0, endLine, 1000);
+
+	return document.getText(range);
+}
+
 // 🔥 CodeLens Provider
 class MundiCodeLensProvider implements vscode.CodeLensProvider {
 	provideCodeLenses(document: vscode.TextDocument): vscode.CodeLens[] {
@@ -77,8 +132,7 @@ class MundiCodeLensProvider implements vscode.CodeLensProvider {
 				lenses.push(
 					new vscode.CodeLens(range, {
 						title: "💡 Explain Code",
-						command: "mundicodelens-lite.helloWorld",
-						arguments: [document, i] // 🔥 PASS CONTEXT
+						command: "mundicodelens-lite.helloWorld"
 					})
 				);
 			}
@@ -94,29 +148,21 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const disposable = vscode.commands.registerCommand(
 		'mundicodelens-lite.helloWorld',
-		async (doc?: vscode.TextDocument, lineNumber?: number) => {
+		async () => {
 
 			try {
-				let codeToExplain = "";
+				const editor = vscode.window.activeTextEditor;
 
-				// 🔥 If triggered from CodeLens
-				if (doc && typeof lineNumber === "number") {
-					codeToExplain = doc.lineAt(lineNumber).text;
-				}
-				// 🔥 If triggered manually (fallback)
-				else {
-					const editor = vscode.window.activeTextEditor;
-
-					if (!editor) {
-						vscode.window.showErrorMessage('No active editor');
-						return;
-					}
-
-					codeToExplain = editor.document.getText(editor.selection);
+				if (!editor) {
+					vscode.window.showErrorMessage('No active editor');
+					return;
 				}
 
-				if (!codeToExplain || codeToExplain.trim() === "") {
-					vscode.window.showInformationMessage('No code to explain');
+				const position = editor.selection.active;
+				const selectedText = getFullFunction(editor.document, position);
+
+				if (!selectedText || selectedText.trim().length < 5) {
+					vscode.window.showInformationMessage('No valid function detected');
 					return;
 				}
 
@@ -125,23 +171,36 @@ export function activate(context: vscode.ExtensionContext) {
 					2000
 				);
 
-				const aiResponse = await getAIResponse(codeToExplain);
+				const aiResponse = await getAIResponse(selectedText);
 				const cleanResponse = aiResponse.trim();
 
 				console.log("🚀 FINAL RESPONSE TO UI:", cleanResponse);
 
-				const panel = vscode.window.createWebviewPanel(
-					'mundiCodeLensPanel',
-					'MundiCodeLens Lite',
-					vscode.ViewColumn.Beside,
-					{ enableScripts: true }
-				);
+				// 🔥 HYBRID LOGIC (ONLY CHANGE)
+				if (cleanResponse.length < 500) {
+					// 🔹 INLINE
+					const formatted = formatExplanationAsComment(cleanResponse);
+					const insertPosition = editor.selection.end;
 
-				panel.webview.html = getWebviewContent(
-					context,
-					cleanResponse,
-					codeToExplain
-				);
+					await editor.edit(editBuilder => {
+						editBuilder.insert(insertPosition, "\n\n" + formatted + "\n");
+					});
+
+				} else {
+					// 🔹 PANEL
+					const panel = vscode.window.createWebviewPanel(
+						'mundiCodeLensPanel',
+						'MundiCodeLens Lite',
+						vscode.ViewColumn.Beside,
+						{ enableScripts: true }
+					);
+
+					panel.webview.html = getWebviewContent(
+						context,
+						cleanResponse,
+						selectedText
+					);
+				}
 
 			} catch (error: any) {
 				console.error("🔥 EXTENSION ERROR:", error);
@@ -155,7 +214,6 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(disposable);
 
-	// 🔥 Register CodeLens
 	const provider = new MundiCodeLensProvider();
 
 	context.subscriptions.push(
@@ -164,6 +222,15 @@ export function activate(context: vscode.ExtensionContext) {
 			provider
 		)
 	);
+}
+
+// 🔹 FORMATTER (already assumed in your system)
+function formatExplanationAsComment(text: string): string {
+	const lines = text.split("\n");
+	return [
+		"// 💡 MundiCodeLens Explanation",
+		...lines.map(line => `// ${line}`)
+	].join("\n");
 }
 
 // 🔹 HTML UI
@@ -191,10 +258,7 @@ function getWebviewContent(
 		.replace(/</g, "&lt;")
 		.replace(/>/g, "&gt;");
 
-	const safeResponse = response
-		.replace(/&/g, "&amp;")
-		.replace(/</g, "&lt;")
-		.replace(/>/g, "&gt;");
+	const safeResponse = response;
 
 	html = html.replace(/{{code}}/g, safeCode);
 	html = html.replace(/{{response}}/g, safeResponse);
