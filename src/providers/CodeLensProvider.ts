@@ -1,0 +1,91 @@
+import * as vscode from 'vscode';
+
+export class MundiCodeLensProvider implements vscode.CodeLensProvider {
+
+    provideCodeLenses(
+        document: vscode.TextDocument
+    ): vscode.CodeLens[] {
+
+        const lenses: vscode.CodeLens[] = [];
+
+        for (let i = 0; i < document.lineCount; i++) {
+
+            const line = document.lineAt(i).text.trim();
+
+            // 🚫 Ignore generated explanations/comments
+            if (
+                line.includes("MundiCodeLens") ||
+                line.includes("Run 'Full Explanation'") ||
+                line.includes("Explain Code") ||
+                line.includes("Refactor") ||
+                line.includes("Fix Bug") ||
+                line.includes("Optimize") ||
+
+                // ✅ Ignore generated comments
+                line.startsWith("#") ||
+                line.startsWith("//") ||
+                line.startsWith("/*") ||
+                line.startsWith("*") ||
+                line.startsWith("<!--")
+            ) {
+                continue;
+            }
+
+            // ✅ Detect real code structures
+            if (
+                line.includes("function") ||
+                line.includes("=>") ||
+                line.includes("const") ||
+                line.startsWith("def ") ||
+                line.startsWith("class ") ||
+                line.startsWith("<") ||
+                line.includes("{")
+            ) {
+
+                const range = new vscode.Range(i, 0, i, 0);
+
+                // 💡 Explain Code
+                lenses.push(
+                    new vscode.CodeLens(range, {
+                        title: "💡 Explain Code",
+                        command: "mundicodelens-lite.helloWorld"
+                    })
+                );
+
+                // 📖 Full Explanation
+                lenses.push(
+                    new vscode.CodeLens(range, {
+                        title: "📖 Full Explanation",
+                        command: "mundicodelens-lite.explainFull"
+                    })
+                );
+
+                // ✨ Refactor
+                lenses.push(
+                    new vscode.CodeLens(range, {
+                        title: "✨ Refactor",
+                        command: "mundicodelens-lite.refactor"
+                    })
+                );
+
+                // 🐞 Fix Bug
+                lenses.push(
+                    new vscode.CodeLens(range, {
+                        title: "🐞 Fix Bug",
+                        command: "mundicodelens-lite.fix"
+                    })
+                );
+
+                // ⚡ Optimize
+                lenses.push(
+                    new vscode.CodeLens(range, {
+                        title: "⚡ Optimize",
+                        command: "mundicodelens-lite.optimize"
+                    })
+                );
+            }
+        }
+
+        return lenses;
+    }
+}
