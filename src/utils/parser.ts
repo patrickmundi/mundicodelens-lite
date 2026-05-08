@@ -90,61 +90,43 @@ export function getFullFunction(
         }
 
         // 🧠 Python (indentation-based)
-        if (isPython) {
+        // 🧠 Python (indentation-based)
+if (isPython) {
 
-            if (i > startLine && trimmed === "") {
-                continue;
-            }
+    // Allow empty lines inside functions
+    if (i > startLine && trimmed === "") {
+        continue;
+    }
 
-            const indent =
-                lineText.match(/^\s*/)?.[0].length || 0;
+    const indent =
+        lineText.match(/^\s*/)?.[0].length || 0;
 
-            const baseIndent =
-                document.lineAt(startLine)
-                    .text
-                    .match(/^\s*/)?.[0].length || 0;
+    const baseIndent =
+        document.lineAt(startLine)
+            .text
+            .match(/^\s*/)?.[0].length || 0;
 
-            if (i > startLine && indent <= baseIndent) {
-                endLine = i - 1;
-                break;
-            }
+    // Allow decorators and comments
+    if (
+        trimmed.startsWith('#') ||
+        trimmed.startsWith('@')
+    ) {
+        continue;
+    }
 
-        } else {
+    // Detect end of Python block
+    if (
+        i > startLine &&
+        trimmed.length > 0 &&
+        indent <= baseIndent
+    ) {
+        endLine = i - 1;
+        break;
+    }
 
-            // 🧠 HTML block detection
-            if (document.languageId === "html") {
-
-                // 🚫 Ignore HTML comments
-                if (trimmed.startsWith("<!--")) {
-                    continue;
-                }
-
-                if (
-                    lineText.includes("</") &&
-                    i > startLine
-                ) {
-                    endLine = i;
-                    break;
-                }
-
-            } else {
-
-                // 🧠 Brace-based languages
-                if (lineText.includes("{")) {
-                    openBraces++;
-                    foundOpening = true;
-                }
-
-                if (lineText.includes("}")) {
-                    openBraces--;
-                }
-
-                if (foundOpening && openBraces === 0) {
-                    endLine = i;
-                    break;
-                }
-            }
-        }
+    // Keep extending valid function block
+    endLine = i;
+}
     }
 
     if (endLine < startLine) {

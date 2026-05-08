@@ -7,6 +7,7 @@ import { getFullFunction } from './utils/parser';
 // ✅ NEW IMPORT
 import { registerExplainCommand } from './commands/explain';
 import { registerRefactorCommand } from './commands/refactor';
+import { registerFixBugCommand } from './commands/fixBug';
 
 // 🔹 Extension Activation
 export function activate(context: vscode.ExtensionContext) {

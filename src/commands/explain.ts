@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 import { getAIResponse } from '../ai/openai';
 import { getFullFunction } from '../utils/parser';
-import { formatExplanationAsComment } from '../utils/formatter';
+import { showPanel } from '../utils/webview';
 
 export function registerExplainCommand(
 	context: vscode.ExtensionContext
@@ -13,10 +13,15 @@ export function registerExplainCommand(
 		async () => {
 
 			try {
+
 				const editor = vscode.window.activeTextEditor;
 
 				if (!editor) {
-					vscode.window.showErrorMessage('No active editor');
+
+					vscode.window.showErrorMessage(
+						'No active editor'
+					);
+
 					return;
 				}
 
@@ -27,10 +32,15 @@ export function registerExplainCommand(
 					position
 				);
 
-				if (!selectedText || selectedText.trim().length < 5) {
+				if (
+					!selectedText ||
+					selectedText.trim().length < 5
+				) {
+
 					vscode.window.showInformationMessage(
 						'No valid function detected'
 					);
+
 					return;
 				}
 
@@ -41,40 +51,34 @@ export function registerExplainCommand(
 
 				const aiResponse = await getAIResponse(
 					selectedText,
-					"explain",
+					'explain',
 					editor.document.languageId
 				);
-
-				const cleanResponse = aiResponse.trim();
 
 				console.log(
-					"🚀 FINAL RESPONSE TO UI:",
-					cleanResponse
+					'🚀 FINAL RESPONSE TO UI:',
+					aiResponse
 				);
 
-				const formatted = formatExplanationAsComment(
-					cleanResponse,
-					editor.document.languageId
+				// ✅ TEMPORARY STABILIZATION:
+				// Show explanation in panel instead of
+				// injecting comments into source code.
+
+				showPanel(
+					context,
+					aiResponse,
+					selectedText
 				);
-
-				const insertPosition = editor.selection.end;
-
-				await editor.edit(editBuilder => {
-					editBuilder.insert(
-						insertPosition,
-						"\n\n" + formatted + "\n"
-					);
-				});
 
 			} catch (error: any) {
 
 				console.error(
-					"🔥 EXTENSION ERROR:",
+					'🔥 EXTENSION ERROR:',
 					error
 				);
 
 				vscode.window.showErrorMessage(
-					`AI ERROR: ${error?.message || "Unknown error"}`
+					`AI ERROR: ${error?.message || 'Unknown error'}`
 				);
 			}
 		}
