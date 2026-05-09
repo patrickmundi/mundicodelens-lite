@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 import { getAIResponse } from '../ai/openai';
 import { getFullFunction } from '../utils/parser';
-import { getWebviewContent } from '../utils/webview';
+import { getWebviewContent, showPanel } from '../utils/webview';
 
 export function registerRefactorCommand(
     context: vscode.ExtensionContext
@@ -30,17 +30,11 @@ export function registerRefactorCommand(
                 editor.document.languageId
             );
 
-            const panel = vscode.window.createWebviewPanel(
-                'mundiCodeLensPanel',
-                'MundiCodeLens AI',
-                vscode.ViewColumn.Beside,
-                { enableScripts: true }
-            );
-
-            panel.webview.html = getWebviewContent(
+            showPanel(
                 context,
                 response,
-                code
+                code,
+                'refactor'
             );
         }
     );

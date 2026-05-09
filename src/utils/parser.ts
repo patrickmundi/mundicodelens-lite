@@ -44,8 +44,6 @@ export function getFullFunction(
             text.startsWith("private") ||
             text.startsWith("protected") ||
             text.includes("=>") ||
-            text.startsWith("const") ||
-            text.startsWith("let") ||
 
             // ✅ HTML (ignore comments)
             (
@@ -60,85 +58,129 @@ export function getFullFunction(
     }
 
     // 🔍 STEP 2 — Detect structure type
-    let openBraces = 0;
-    let foundOpening = false;
-    let isPython = document.languageId === "python";
+let openBraces = 0;
+let foundOpening = false;
 
-    for (let i = startLine; i < document.lineCount; i++) {
+const isPython =
+    document.languageId === "python";
 
-        const lineText = document.lineAt(i).text;
-        const trimmed = lineText.trim();
+for (
+    let i = startLine;
+    i < document.lineCount;
+    i++
+) {
 
-        // 🚫 STOP before generated explanation content/comments
-        if (
+    const lineText =
+        document.lineAt(i).text;
 
-            trimmed.includes("MundiCodeLens") ||
-            trimmed.includes("Run 'Full Explanation'") ||
-            trimmed.includes("Explain Code") ||
-            trimmed.includes("Refactor") ||
-            trimmed.includes("Fix Bug") ||
-            trimmed.includes("Optimize") ||
+    const trimmed =
+        lineText.trim();
 
-            trimmed.startsWith("#") ||
-            trimmed.startsWith("//") ||
-            trimmed.startsWith("/*") ||
-            trimmed.startsWith("*") ||
-            trimmed.startsWith("<!--")
-        ) {
-            endLine = i - 1;
-            break;
-        }
-
-        // 🧠 Python (indentation-based)
-        // 🧠 Python (indentation-based)
-if (isPython) {
-
-    // Allow empty lines inside functions
-    if (i > startLine && trimmed === "") {
-        continue;
-    }
-
-    const indent =
-        lineText.match(/^\s*/)?.[0].length || 0;
-
-    const baseIndent =
-        document.lineAt(startLine)
-            .text
-            .match(/^\s*/)?.[0].length || 0;
-
-    // Allow decorators and comments
+    // 🚫 STOP before generated explanation content/comments
     if (
-        trimmed.startsWith('#') ||
-        trimmed.startsWith('@')
-    ) {
-        continue;
-    }
 
-    // Detect end of Python block
-    if (
-        i > startLine &&
-        trimmed.length > 0 &&
-        indent <= baseIndent
+        trimmed.includes("MundiCodeLens") ||
+        trimmed.includes("Run 'Full Explanation'") ||
+        trimmed.includes("Explain Code") ||
+        trimmed.includes("Refactor") ||
+        trimmed.includes("Fix Bug") ||
+        trimmed.includes("Optimize") ||
+
+        trimmed.startsWith("#") ||
+        trimmed.startsWith("//") ||
+        trimmed.startsWith("/*") ||
+        trimmed.startsWith("*") ||
+        trimmed.startsWith("<!--")
     ) {
+
         endLine = i - 1;
         break;
     }
 
-    // Keep extending valid function block
-    endLine = i;
-}
+    // 🧠 PYTHON
+    if (isPython) {
+
+        // Allow empty lines
+        if (
+            i > startLine &&
+            trimmed === ""
+        ) {
+            continue;
+        }
+
+        const indent =
+            lineText.match(/^\s*/)?.[0].length || 0;
+
+        const baseIndent =
+            document
+                .lineAt(startLine)
+                .text
+                .match(/^\s*/)?.[0].length || 0;
+
+        // Allow decorators/comments
+        if (
+            trimmed.startsWith("#") ||
+            trimmed.startsWith("@")
+        ) {
+            continue;
+        }
+
+        // Detect end of Python block
+        if (
+            i > startLine &&
+            trimmed.length > 0 &&
+            indent <= baseIndent
+        ) {
+
+            endLine = i - 1;
+            break;
+        }
+
+        endLine = i;
     }
 
-    if (endLine < startLine) {
-        endLine = position.line;
+    // 🧠 JAVASCRIPT / TYPESCRIPT / C-STYLE
+    else {
+
+        const opens =
+            (lineText.match(/{/g) || []).length;
+
+        const closes =
+            (lineText.match(/}/g) || []).length;
+
+        // Detect first opening brace
+        if (opens > 0) {
+            foundOpening = true;
+        }
+
+        openBraces += opens;
+        openBraces -= closes;
+
+        // Keep extending block
+        endLine = i;
+
+        // Detect completed block
+        if (
+            foundOpening &&
+            openBraces === 0 &&
+            i > startLine
+        ) {
+            break;
+        }
     }
-
-    const range = new vscode.Range(
-        startLine,
-        0,
-        endLine,
-        1000
-    );
-
-    return document.getText(range);
 }
+
+// Fallback safety
+if (endLine < startLine) {
+    endLine = position.line;
+}
+
+const range = new vscode.Range(
+    startLine,
+    0,
+    endLine,
+    1000
+);
+
+return document.getText(range);
+ }

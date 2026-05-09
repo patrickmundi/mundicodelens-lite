@@ -1,70 +1,222 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
+import MarkdownIt from 'markdown-it';
+
+const md = new MarkdownIt();
+
+// 🔹 Singleton Panel
+let currentPanel: vscode.WebviewPanel | undefined;
 
 // 🔹 HTML UI
 export function getWebviewContent(
-    context: vscode.ExtensionContext,
-    response: string,
-    code: string
+	context: vscode.ExtensionContext,
+	response: string,
+	code: string,
+	mode: string
 ): string {
 
-    const filePath = path.join(
-        context.extensionPath,
-        'src',
-        'webview',
-        'panel.html'
-    );
+	const filePath = path.join(
+		context.extensionPath,
+		'src',
+		'webview',
+		'panel.html'
+	);
 
-    console.log("WEBVIEW PATH:", filePath);
+	console.log(
+		'WEBVIEW PATH:',
+		filePath
+	);
 
-    let html: string;
+	let html: string;
 
-    try {
-        html = fs.readFileSync(filePath, 'utf8');
-    } catch (err) {
+	try {
 
-        console.error("FILE READ ERROR:", err);
+		html = fs.readFileSync(
+			filePath,
+			'utf8'
+		);
 
-        return `
-            <h2>File load failed</h2>
-            <pre>${filePath}</pre>
-        `;
-    }
+	}
+	catch (err) {
 
-    const safeCode = code
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+		console.error(
+			'FILE READ ERROR:',
+			err
+		);
 
-    const safeResponse = response
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+		return `
+			<h2>File load failed</h2>
+			<pre>${filePath}</pre>
+		`;
+	}
 
-    html = html.replace(/{{code}}/g, safeCode);
-    html = html.replace(/{{response}}/g, safeResponse);
+	// 🔹 Dynamic Panel Titles
+	let panelTitle =
+		'🧠 AI Response';
 
-    return html;
+	if (mode === 'explain') {
+
+		panelTitle =
+			'💡 Code Explanation';
+	}
+
+	else if (
+		mode === 'explainFull'
+	) {
+
+		panelTitle =
+			'📘 Deep Explanation';
+	}
+
+	else if (
+		mode === 'refactor'
+	) {
+
+		panelTitle =
+			'✨ Refactor Suggestions';
+	}
+
+	else if (
+		mode === 'fix'
+	) {
+
+		panelTitle =
+			'🐞 Bug Analysis';
+	}
+
+	else if (
+		mode === 'optimize'
+	) {
+
+		panelTitle =
+			'⚡ Optimization Review';
+	}
+
+	// 🔹 Dynamic Subtitles
+	let panelSubtitle =
+		'AI-assisted development workflow';
+
+	if (mode === 'explain') {
+
+		panelSubtitle =
+			'Quick conceptual explanation of the selected code.';
+	}
+
+	else if (
+		mode === 'explainFull'
+	) {
+
+		panelSubtitle =
+			'Deep walkthrough with educational breakdown and logic analysis.';
+	}
+
+	else if (
+		mode === 'refactor'
+	) {
+
+		panelSubtitle =
+			'Code structure and readability improvement suggestions.';
+	}
+
+	else if (
+		mode === 'fix'
+	) {
+
+		panelSubtitle =
+			'Potential issue detection and correction analysis.';
+	}
+
+	else if (
+		mode === 'optimize'
+	) {
+
+		panelSubtitle =
+			'Performance and readability optimization review.';
+	}
+
+	// 🔹 Escape code safely
+	const safeCode = code
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;');
+
+	// 🔹 Render markdown response
+	const safeResponse =
+		md.render(response);
+
+	html = html.replace(
+		/{{code}}/g,
+		safeCode
+	);
+
+	html = html.replace(
+		/{{response}}/g,
+		safeResponse
+	);
+
+	html = html.replace(
+		/{{panelTitle}}/g,
+		panelTitle
+	);
+
+	html = html.replace(
+		/{{panelSubtitle}}/g,
+		panelSubtitle
+	);
+
+	return html;
 }
 
 // 🔹 Reusable Panel Function
 export function showPanel(
-    context: vscode.ExtensionContext,
-    response: string,
-    code: string
+	context: vscode.ExtensionContext,
+	response: string,
+	code: string,
+	mode: string
 ) {
 
-    const panel = vscode.window.createWebviewPanel(
-        'mundiCodeLensPanel',
-        'MundiCodeLens AI',
-        vscode.ViewColumn.Beside,
-        { enableScripts: true }
-    );
+	// ✅ Reuse existing panel
+	if (currentPanel) {
 
-    panel.webview.html = getWebviewContent(
-        context,
-        response,
-        code
-    );
+		currentPanel.reveal(
+			vscode.ViewColumn.Beside
+		);
+
+		currentPanel.webview.html =
+			getWebviewContent(
+				context,
+				response,
+				code,
+				mode
+			);
+
+		return;
+	}
+
+	// ✅ Create new panel only once
+	currentPanel =
+		vscode.window.createWebviewPanel(
+			'mundiCodeLensPanel',
+			'MundiCodeLens AI',
+			vscode.ViewColumn.Beside,
+			{
+				enableScripts: true
+			}
+		);
+
+	currentPanel.webview.html =
+		getWebviewContent(
+			context,
+			response,
+			code,
+			mode
+		);
+
+	// ✅ Cleanup when closed
+	currentPanel.onDidDispose(() => {
+
+		currentPanel = undefined;
+
+	});
 }

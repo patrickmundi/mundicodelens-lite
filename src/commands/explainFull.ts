@@ -40,14 +40,15 @@ export function registerExplainFullCommand(
 
 				const aiResponse = await getAIResponse(
 					selectedText,
-					"explain",
+					"deepExplain",
 					editor.document.languageId
 				);
 
 				showPanel(
 					context,
 					aiResponse,
-					selectedText
+					selectedText,
+					'explainFull'
 				);
 
 			}

@@ -67,9 +67,9 @@ export function registerExplainCommand(
 				showPanel(
 					context,
 					aiResponse,
-					selectedText
+					selectedText,
+					'explain'
 				);
-
 			} catch (error: any) {
 
 				console.error(

@@ -44,7 +44,8 @@ export function registerFixBugCommand(
 					showPanel(
 						context,
 						response,
-						code
+						code,
+						'fix'
 					);
 
 				} catch (error: any) {

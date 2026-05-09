@@ -57,10 +57,7 @@ export class MundiCodeLensProvider implements vscode.CodeLensProvider {
 
                 line.startsWith('<') &&
                 !line.startsWith('</') &&
-                !line.startsWith('<!--') &&
-
-                // Ignore inline closing tags
-                !line.includes('</');
+                !line.startsWith('<!--');
 
             // ✅ Only attach lenses to meaningful structures
             if (

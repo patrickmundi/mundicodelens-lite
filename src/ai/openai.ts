@@ -26,7 +26,7 @@ function getOpenAI(): OpenAI {
 // 🔹 AI Function (UPGRADED — MULTI ACTION)
 export async function getAIResponse(
     code: string,
-    action: "explain" | "refactor" | "fix" | "optimize",
+    action: "explain" | "deepExplain" | "refactor" | "fix" | "optimize",
     language: string
 ): Promise<string> {
 
@@ -35,18 +35,120 @@ export async function getAIResponse(
 
         let prompt = "";
 
-        if (action === "explain") {
-            prompt = `Explain this ${language} code clearly:\n\n${code}`;
-        }
-        else if (action === "refactor") {
-            prompt = `Refactor this ${language} code to be cleaner and more maintainable:\n\n${code}`;
-        }
-        else if (action === "fix") {
-            prompt = `Find and fix any bugs in this ${language} code:\n\n${code}`;
-        }
-        else if (action === "optimize") {
-            prompt = `Optimize this ${language} code for performance and readability:\n\n${code}`;
-        }
+switch (action) {
+
+    case "explain":
+
+        prompt = `
+You are generating a VERY SHORT code summary.
+
+STRICT OUTPUT RULES:
+- Maximum 3 bullet points
+- Each bullet point must be ONE sentence only
+- No introductions
+- No conclusions
+- No examples
+- No syntax breakdown
+- No teaching style
+- No extra commentary
+- No markdown code blocks
+- Keep the entire response under 40 words
+
+ONLY describe the main purpose of the code.
+
+Code:
+${code}
+`;
+
+        break;
+
+    case "deepExplain": {
+
+    const summary =
+        await getQuickSummary(
+            openai,
+            code,
+            language
+        );
+
+    console.log("🟢 SUMMARY:");
+    console.log(summary);
+
+    const detailedExplanation =
+        await getDetailedExpansion(
+            openai,
+            code,
+            language,
+            summary
+        );
+
+    console.log("🔵 DETAILED:");
+    console.log(detailedExplanation);
+
+    return `
+# Quick Summary
+
+${summary}
+
+# Detailed Explanation
+
+${detailedExplanation}
+`;
+}
+
+        break;
+
+    case "refactor":
+
+        prompt = `
+Refactor this ${language} code.
+
+Requirements:
+- improve readability
+- improve maintainability
+- preserve functionality
+- follow modern best practices
+
+Code:
+${code}
+`;
+
+        break;
+
+    case "fix":
+
+        prompt = `
+Find and fix bugs in this ${language} code.
+
+Requirements:
+- identify problems
+- explain the issues
+- provide corrected code
+- preserve intended functionality
+
+Code:
+${code}
+`;
+
+        break;
+
+    case "optimize":
+
+        prompt = `
+Optimize this ${language} code.
+
+Focus on:
+- performance
+- readability
+- maintainability
+- cleaner logic
+
+Code:
+${code}
+`;
+
+        break;
+}
 
         const response = await openai.responses.create({
             model: "gpt-4.1-mini",
@@ -71,4 +173,89 @@ export async function getAIResponse(
 
         return `❌ AI ERROR:\n\n${error?.message || "Unknown error"}`;
     }
+}
+
+async function getQuickSummary(
+    openai: OpenAI,
+    code: string,
+    language: string
+): Promise<string> {
+
+    const prompt = `
+You are generating a VERY SHORT code summary.
+
+STRICT OUTPUT RULES:
+- Maximum 3 bullet points
+- Each bullet point must be ONE sentence only
+- No introductions
+- No conclusions
+- No examples
+- No syntax breakdown
+- No teaching style
+- No markdown code blocks
+- Keep the entire response under 40 words
+
+ONLY describe the main purpose of the code.
+
+Code:
+${code}
+`;
+
+    const response = await openai.responses.create({
+        model: "gpt-4.1-mini",
+        input: prompt,
+    });
+
+    return (
+        (response as any).output_text ||
+        "⚠️ No summary generated"
+    );
+}
+
+async function getDetailedExpansion(
+    openai: OpenAI,
+    code: string,
+    language: string,
+    summary: string
+): Promise<string> {
+
+    const prompt = `
+You are an expert senior programming instructor.
+
+Your task is to teach this code thoroughly to a beginner developer.
+
+IMPORTANT RULES:
+- Be detailed and educational
+- Explain concepts step-by-step
+- Explain syntax and logic
+- Explain execution flow
+- Explain WHY the code works
+- Explain what each important line does
+- Use beginner-friendly teaching language
+- Use markdown headings
+- Use bullet points where helpful
+- Include examples where useful
+- Minimum 300 words
+- DO NOT summarize briefly
+- DO NOT compress the explanation
+
+The student already saw this quick summary:
+
+${summary}
+
+Now expand deeply beyond that summary.
+
+Code:
+${code}
+`;
+
+    const response = await openai.responses.create({
+        model: "gpt-4.1-mini",
+        input: prompt,
+    });
+
+    return (
+        (response as any).output_text ||
+        "⚠️ No detailed explanation generated"
+    );
 }
