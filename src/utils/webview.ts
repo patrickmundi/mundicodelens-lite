@@ -11,6 +11,7 @@ let currentPanel: vscode.WebviewPanel | undefined;
 // 🔹 HTML UI
 export function getWebviewContent(
 	context: vscode.ExtensionContext,
+	webview: vscode.Webview,
 	response: string,
 	code: string,
 	mode: string
@@ -22,6 +23,18 @@ export function getWebviewContent(
 		'webview',
 		'panel.html'
 	);
+
+		const stylePath = vscode.Uri.file(
+		path.join(
+			context.extensionPath,
+			'src',
+			'webview',
+			'styles.css'
+		)
+	);
+
+	const styleUri =
+		webview.asWebviewUri(stylePath);
 
 	console.log(
 		'WEBVIEW PATH:',
@@ -165,6 +178,11 @@ export function getWebviewContent(
 		panelSubtitle
 	);
 
+	html = html.replace(
+		'{{styleUri}}',
+		styleUri.toString()
+	);
+
 	return html;
 }
 
@@ -186,6 +204,7 @@ export function showPanel(
 		currentPanel.webview.html =
 			getWebviewContent(
 				context,
+				currentPanel.webview,
 				response,
 				code,
 				mode
@@ -208,6 +227,7 @@ export function showPanel(
 	currentPanel.webview.html =
 		getWebviewContent(
 			context,
+			currentPanel.webview,
 			response,
 			code,
 			mode

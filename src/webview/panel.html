@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8" />
 
     <meta
@@ -10,41 +12,11 @@
 
     <title>MundiCodeLens AI</title>
 
-    <style>
-        body {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            line-height: 1.6;
-        }
+    <link
+        rel="stylesheet"
+        href="{{styleUri}}"
+    />
 
-        h1 {
-            color: #4fc3f7;
-        }
-
-        h2 {
-            color: #81c784;
-            margin-top: 30px;
-        }
-
-        pre {
-            background: #111;
-            padding: 15px;
-            border-radius: 8px;
-            overflow-x: auto;
-            border: 1px solid #333;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .response {
-            white-space: pre-wrap;
-        }
-    </style>
 </head>
 
 <body>
@@ -53,27 +25,38 @@
 
         <h1>🚀 MundiCodeLens AI</h1>
 
-        <h2>📌 Selected Code</h2>
+        <div class="section">
 
-        <pre>{{code}}</pre>
+            <div class="badge">
+                SOURCE
+            </div>
 
-        <h2>{{panelTitle}}</h2>
+            <h2>📌 Selected Code</h2>
 
-        <p
-            style="
-                color: #9e9e9e;
-                margin-top: -10px;
-                margin-bottom: 20px;
-            "
-        >
-            {{panelSubtitle}}
-        </p>
+            <pre><code>{{code}}</code></pre>
 
-        <div class="response">
-            {{response}}
+        </div>
+
+        <div class="section">
+
+            <div class="badge">
+                AI ANALYSIS
+            </div>
+
+            <h2>{{panelTitle}}</h2>
+
+            <p class="subtitle">
+                {{panelSubtitle}}
+            </p>
+
+            <div class="response">
+                {{response}}
+            </div>
+
         </div>
 
     </div>
 
 </body>
+
 </html>
