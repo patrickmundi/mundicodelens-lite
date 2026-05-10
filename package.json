@@ -11,14 +11,14 @@
   ],
   "activationEvents": [
     "*",
-    "onCommand:mundicodelens-lite.helloWorld"
+    "onCommand:mundicodelens-lite.explainCode"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "mundicodelens-lite.helloWorld",
-        "title": "Hello World"
+        "command": "mundicodelens-lite.explainCode",
+        "title": "Explain Code with MundiCodeLens Lite"
       }
     ]
   },
