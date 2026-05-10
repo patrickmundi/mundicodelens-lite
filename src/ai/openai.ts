@@ -27,11 +27,19 @@ function getOpenAI(): OpenAI {
 export async function getAIResponse(
     code: string,
     action: "explain" | "deepExplain" | "refactor" | "fix" | "optimize",
-    language: string
+    language: string,
+    context?: string
 ): Promise<string> {
 
     try {
         const openai = getOpenAI();
+        const contextBlock = context
+        ? `
+
+    ${context}
+
+    `
+        : "";
 
         let prompt = "";
 
@@ -56,36 +64,39 @@ STRICT OUTPUT RULES:
 
 ONLY describe the main purpose of the code.
 
+${contextBlock}
+
 Code:
 ${code}
 `;
-
         break;
 
     case "deepExplain": {
 
-    const summary =
-        await getQuickSummary(
-            openai,
-            code,
-            language
-        );
+        const summary =
+            await getQuickSummary(
+                openai,
+                code,
+                language,
+                contextBlock
+            );
 
-    console.log("🟢 SUMMARY:");
-    console.log(summary);
+        console.log("🟢 SUMMARY:");
+        console.log(summary);
 
-    const detailedExplanation =
-        await getDetailedExpansion(
-            openai,
-            code,
-            language,
-            summary
-        );
+        const detailedExplanation =
+            await getDetailedExpansion(
+                openai,
+                code,
+                language,
+                summary,
+                contextBlock
+            );
 
-    console.log("🔵 DETAILED:");
-    console.log(detailedExplanation);
+        console.log("🔵 DETAILED:");
+        console.log(detailedExplanation);
 
-    return `
+        return `
 # Quick Summary
 
 ${summary}
@@ -94,7 +105,7 @@ ${summary}
 
 ${detailedExplanation}
 `;
-}
+    }
 
         break;
 
@@ -108,6 +119,8 @@ Requirements:
 - improve maintainability
 - preserve functionality
 - follow modern best practices
+
+${contextBlock}
 
 Code:
 ${code}
@@ -126,6 +139,8 @@ Requirements:
 - provide corrected code
 - preserve intended functionality
 
+${contextBlock}
+
 Code:
 ${code}
 `;
@@ -142,6 +157,8 @@ Focus on:
 - readability
 - maintainability
 - cleaner logic
+
+${contextBlock}
 
 Code:
 ${code}
@@ -178,7 +195,8 @@ ${code}
 async function getQuickSummary(
     openai: OpenAI,
     code: string,
-    language: string
+    language: string,
+    contextBlock: string
 ): Promise<string> {
 
     const prompt = `
@@ -196,6 +214,8 @@ STRICT OUTPUT RULES:
 - Keep the entire response under 40 words
 
 ONLY describe the main purpose of the code.
+
+${contextBlock}
 
 Code:
 ${code}
@@ -216,7 +236,8 @@ async function getDetailedExpansion(
     openai: OpenAI,
     code: string,
     language: string,
-    summary: string
+    summary: string,
+    contextBlock: string
 ): Promise<string> {
 
     const prompt = `
@@ -252,6 +273,8 @@ The student already saw this quick summary:
 ${summary}
 
 Now expand deeply beyond that summary.
+
+${contextBlock}
 
 Code:
 ${code}

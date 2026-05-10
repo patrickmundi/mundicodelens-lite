@@ -1,6 +1,8 @@
 import * as vscode from 'vscode';
 
 import { getAIResponse } from '../ai/openai';
+import { buildProjectContext } from '../context/builders/projectContextBuilder';
+import { formatPromptContext } from '../context/builders/promptContextFormatter';
 import { getFullFunction } from '../utils/parser';
 import { showPanel } from '../utils/webview';
 
@@ -24,6 +26,20 @@ export function registerExplainCommand(
 
 					return;
 				}
+
+				const workspaceFolder =
+    vscode.workspace.workspaceFolders?.[0];
+
+				if (!workspaceFolder) {
+
+					vscode.window.showErrorMessage(
+						'No workspace folder found'
+					);
+
+					return;
+				}
+
+				const workspaceRoot = workspaceFolder.uri.fsPath;
 
 				const position = editor.selection.active;
 
@@ -49,10 +65,27 @@ export function registerExplainCommand(
 					2000
 				);
 
+				const projectContext =
+    buildProjectContext(
+        workspaceRoot,
+        editor.document.fileName
+    );
+
+				const formattedContext =
+					formatPromptContext(
+						projectContext
+					);
+
+				console.log(
+					'🧠 FORMATTED CONTEXT:',
+					formattedContext
+				);
+
 				const aiResponse = await getAIResponse(
 					selectedText,
 					'explain',
-					editor.document.languageId
+					editor.document.languageId,
+					formattedContext
 				);
 
 				console.log(
