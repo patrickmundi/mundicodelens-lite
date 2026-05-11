@@ -10,17 +10,39 @@ import { getFullFunction } from '../utils/parser';
 
 import { showPanel } from '../utils/webview';
 
-export async function runAICommand(
-    context: vscode.ExtensionContext,
+interface RunAICommandOptions {
+
+    context: vscode.ExtensionContext;
+
     action:
         | 'explain'
         | 'deepExplain'
         | 'refactor'
         | 'fix'
-        | 'optimize'
+        | 'optimize';
+
+    panelMode?:
+        | 'explain'
+        | 'explainFull'
+        | 'refactor'
+        | 'fix'
+        | 'optimize';
+
+    loadingMessage?: string;
+}
+
+export async function runAICommand(
+    options: RunAICommandOptions
 ) {
 
-    try {
+    const {
+    context,
+    action,
+    panelMode,
+    loadingMessage
+} = options;
+
+try {
 
         const editor =
             vscode.window.activeTextEditor;
@@ -70,8 +92,11 @@ export async function runAICommand(
             return;
         }
 
-        vscode.window.setStatusBarMessage(
-            '$(sync~spin) MundiCodeLens thinking...',
+       vscode.window.setStatusBarMessage(
+            `$(sync~spin) ${
+                loadingMessage ||
+                'MundiCodeLens thinking...'
+            }`,
             2000
         );
 
@@ -108,7 +133,7 @@ export async function runAICommand(
             context,
             aiResponse,
             selectedText,
-            action
+            panelMode || action
         );
 
     } catch (error: any) {

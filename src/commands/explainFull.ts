@@ -12,12 +12,21 @@ export function registerExplainFullCommand(
 
             async () => {
 
-                await runAICommand(
+                await runAICommand({
+
                     context,
-                    'deepExplain'
-                );
+
+                    action: 'deepExplain',
+
+                    panelMode: 'explainFull',
+
+                    loadingMessage:
+                        'Loading full explanation...'
+                });
             }
         );
 
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(
+        disposable
+    );
 }

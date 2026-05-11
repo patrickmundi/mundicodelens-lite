@@ -12,12 +12,21 @@ export function registerFixBugCommand(
 
             async () => {
 
-                await runAICommand(
+                await runAICommand({
+
                     context,
-                    'fix'
-                );
+
+                    action: 'fix',
+
+                    panelMode: 'fix',
+
+                    loadingMessage:
+                        'Fixing code...'
+                });
             }
         );
 
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(
+        disposable
+    );
 }

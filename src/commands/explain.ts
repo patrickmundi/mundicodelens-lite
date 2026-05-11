@@ -12,12 +12,21 @@ export function registerExplainCommand(
 
             async () => {
 
-                await runAICommand(
+                await runAICommand({
+
                     context,
-                    'explain'
-                );
+
+                    action: 'explain',
+
+                    panelMode: 'explain',
+
+                    loadingMessage:
+                        'MundiCodeLens thinking...'
+                });
             }
         );
 
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(
+        disposable
+    );
 }

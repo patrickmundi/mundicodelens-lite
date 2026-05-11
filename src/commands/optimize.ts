@@ -12,12 +12,21 @@ export function registerOptimizeCommand(
 
             async () => {
 
-                await runAICommand(
+                await runAICommand({
+
                     context,
-                    'optimize'
-                );
+
+                    action: 'optimize',
+
+                    panelMode: 'optimize',
+
+                    loadingMessage:
+                        'Optimizing code...'
+                });
             }
         );
 
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(
+        disposable
+    );
 }

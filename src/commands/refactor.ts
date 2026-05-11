@@ -8,16 +8,25 @@ export function registerRefactorCommand(
 
     const disposable =
         vscode.commands.registerCommand(
-            'mundicodelens-lite.refactorCode',
+            'mundicodelens-lite.refactor',
 
             async () => {
 
-                await runAICommand(
+                await runAICommand({
+
                     context,
-                    'refactor'
-                );
+
+                    action: 'refactor',
+
+                    panelMode: 'refactor',
+
+                    loadingMessage:
+                        'Refactoring code...'
+                });
             }
         );
 
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(
+        disposable
+    );
 }
