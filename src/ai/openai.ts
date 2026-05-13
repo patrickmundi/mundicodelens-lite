@@ -1,102 +1,124 @@
-import OpenAI from 'openai';
-import * as dotenv from 'dotenv';
-import * as path from 'path';
+import OpenAI from "openai";
+
+import * as dotenv from "dotenv";
+
+import * as path from "path";
+
+import { buildExplainPrompt } from "./prompts/buildExplainPrompt";
+
+import { buildRefactorPrompt } from "./prompts/buildRefactorPrompt";
+
+import { buildFixPrompt } from "./prompts/buildFixPrompt";
+
+import { buildOptimizePrompt } from "./prompts/buildOptimizePrompt";
+
+import { buildDeepExplainPrompt } from "./prompts/buildDeepExplainPrompt";
+
+import { BASE_ENGINEERING_SYSTEM_PROMPT } from "./system/baseEngineeringSystemPrompt";
 
 // 🔥 Load environment variables
-const envPath = path.resolve(__dirname, '../../.env');
-dotenv.config({ path: envPath });
+
+const envPath = path.resolve(__dirname, "../../.env");
+
+dotenv.config({
+  path: envPath,
+});
 
 // 🔹 OpenAI singleton
+
 let openaiInstance: OpenAI | null = null;
 
 function getOpenAI(): OpenAI {
-    if (!process.env.OPENAI_API_KEY) {
-        throw new Error("OPENAI_API_KEY is missing");
-    }
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("OPENAI_API_KEY is missing");
+  }
 
-    if (!openaiInstance) {
-        openaiInstance = new OpenAI({
-            apiKey: process.env.OPENAI_API_KEY,
-        });
-    }
+  if (!openaiInstance) {
+    openaiInstance = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+  }
 
-    return openaiInstance;
+  return openaiInstance;
 }
 
-// 🔹 AI Function (UPGRADED — MULTI ACTION)
+// 🔹 AI Function
+
 export async function getAIResponse(
-    code: string,
-    action: "explain" | "deepExplain" | "refactor" | "fix" | "optimize",
-    language: string,
-    context?: string
+  code: string,
+
+  action: "explain" | "deepExplain" | "refactor" | "fix" | "optimize",
+
+  language: string,
+
+  context?: string,
+
+  detectedRole?: string,
 ): Promise<string> {
+  try {
+    const openai = getOpenAI();
 
-    try {
-        const openai = getOpenAI();
-        const contextBlock = context
-        ? `
+    const contextBlock = context
+      ? `
 
-    ${context}
+${context}
 
-    `
-        : "";
+`
+      : "";
 
-        let prompt = "";
+    let prompt = "";
 
-switch (action) {
+    switch (action) {
+      case "explain":
+        prompt = buildExplainPrompt(
+          code,
 
-    case "explain":
+          language,
 
-        prompt = `
-You are generating a VERY SHORT code summary.
+          contextBlock,
 
-STRICT OUTPUT RULES:
-- Maximum 3 bullet points
-- Each bullet point must be ONE sentence only
-- No introductions
-- No conclusions
-- No examples
-- No syntax breakdown
-- No teaching style
-- No extra commentary
-- No markdown code blocks
-- Keep the entire response under 40 words
+          detectedRole,
+        );
 
-ONLY describe the main purpose of the code.
-
-${contextBlock}
-
-Code:
-${code}
-`;
         break;
 
-    case "deepExplain": {
+      case "deepExplain": {
+        const summary = await getQuickSummary(
+          openai,
 
-        const summary =
-            await getQuickSummary(
-                openai,
-                code,
-                language,
-                contextBlock
-            );
+          code,
+
+          language,
+
+          contextBlock,
+
+          detectedRole,
+        );
 
         console.log("🟢 SUMMARY:");
+
         console.log(summary);
 
-        const detailedExplanation =
-            await getDetailedExpansion(
-                openai,
-                code,
-                language,
-                summary,
-                contextBlock
-            );
+        const detailedExplanation = await getDetailedExpansion(
+          openai,
+
+          code,
+
+          language,
+
+          summary,
+
+          contextBlock,
+
+          detectedRole,
+        );
 
         console.log("🔵 DETAILED:");
+
         console.log(detailedExplanation);
 
         return `
+
 # Quick Summary
 
 ${summary}
@@ -104,189 +126,158 @@ ${summary}
 # Detailed Explanation
 
 ${detailedExplanation}
+
 `;
+      }
+
+      case "refactor":
+        prompt = buildRefactorPrompt(
+          code,
+
+          language,
+
+          contextBlock,
+
+          detectedRole,
+        );
+
+        break;
+
+      case "fix":
+        prompt = buildFixPrompt(
+          code,
+
+          language,
+
+          contextBlock,
+
+          detectedRole,
+        );
+
+        break;
+
+      case "optimize":
+        prompt = buildOptimizePrompt(
+          code,
+
+          language,
+
+          contextBlock,
+
+          detectedRole,
+        );
+
+        break;
     }
-
-        break;
-
-    case "refactor":
-
-        prompt = `
-Refactor this ${language} code.
-
-Requirements:
-- improve readability
-- improve maintainability
-- preserve functionality
-- follow modern best practices
-
-${contextBlock}
-
-Code:
-${code}
-`;
-
-        break;
-
-    case "fix":
-
-        prompt = `
-Find and fix bugs in this ${language} code.
-
-Requirements:
-- identify problems
-- explain the issues
-- provide corrected code
-- preserve intended functionality
-
-${contextBlock}
-
-Code:
-${code}
-`;
-
-        break;
-
-    case "optimize":
-
-        prompt = `
-Optimize this ${language} code.
-
-Focus on:
-- performance
-- readability
-- maintainability
-- cleaner logic
-
-${contextBlock}
-
-Code:
-${code}
-`;
-
-        break;
-}
-
-        const response = await openai.responses.create({
-            model: "gpt-4.1-mini",
-            input: prompt,
-        });
-
-        console.log("✅ FULL RESPONSE:", JSON.stringify(response, null, 2));
-
-        const text =
-            (response as any).output_text ||
-            (response as any).output?.[0]?.content?.[0]?.text ||
-            "⚠️ No response from AI";
-
-        console.log("✅ AI TEXT:", text);
-
-        return text;
-
-    } catch (error: any) {
-        console.error("🔥 AI ERROR FULL:", error);
-        console.error("🔥 MESSAGE:", error?.message);
-        console.error("🔥 STACK:", error?.stack);
-
-        return `❌ AI ERROR:\n\n${error?.message || "Unknown error"}`;
-    }
-}
-
-async function getQuickSummary(
-    openai: OpenAI,
-    code: string,
-    language: string,
-    contextBlock: string
-): Promise<string> {
-
-    const prompt = `
-You are generating a VERY SHORT code summary.
-
-STRICT OUTPUT RULES:
-- Maximum 3 bullet points
-- Each bullet point must be ONE sentence only
-- No introductions
-- No conclusions
-- No examples
-- No syntax breakdown
-- No teaching style
-- No markdown code blocks
-- Keep the entire response under 40 words
-
-ONLY describe the main purpose of the code.
-
-${contextBlock}
-
-Code:
-${code}
-`;
 
     const response = await openai.responses.create({
-        model: "gpt-4.1-mini",
-        input: prompt,
+      model: "gpt-4.1-mini",
+
+      instructions: BASE_ENGINEERING_SYSTEM_PROMPT,
+
+      input: prompt,
     });
 
-    return (
-        (response as any).output_text ||
-        "⚠️ No summary generated"
-    );
+    console.log("✅ FULL RESPONSE:", JSON.stringify(response, null, 2));
+
+    const text =
+      (response as any).output_text ||
+      (response as any).output?.[0]?.content?.[0]?.text ||
+      "⚠️ No response from AI";
+
+    console.log("✅ AI TEXT:", text);
+
+    return text;
+  } catch (error: any) {
+    console.error("🔥 AI ERROR FULL:", error);
+
+    console.error("🔥 MESSAGE:", error?.message);
+
+    console.error("🔥 STACK:", error?.stack);
+
+    return `❌ AI ERROR:
+
+${error?.message || "Unknown error"}
+`;
+  }
 }
 
-async function getDetailedExpansion(
-    openai: OpenAI,
-    code: string,
-    language: string,
-    summary: string,
-    contextBlock: string
+// 🔹 QUICK SUMMARY
+
+async function getQuickSummary(
+  openai: OpenAI,
+
+  code: string,
+
+  language: string,
+
+  contextBlock: string,
+
+  detectedRole?: string,
 ): Promise<string> {
+  const prompt = buildExplainPrompt(
+    code,
 
-    const prompt = `
-You are an expert senior software engineer mentoring a junior developer.
+    language,
 
-Your task is to explain THIS specific code in a practical, context-aware way.
+    contextBlock,
 
-Assume the developer already understands basic programming concepts.
-Do NOT explain elementary concepts unless they are directly relevant to understanding this implementation.
+    detectedRole,
+  );
 
-Focus on:
-- what this specific code is doing
-- why the logic is structured this way
-- how execution flows through the code
-- important implementation details
-- architectural decisions or patterns used
-- practical implications
-- potential weaknesses or improvements
-- how different parts of the code interact
+  const response = await openai.responses.create({
+    model: "gpt-4.1-mini",
 
-Guidelines:
-- Be educational but concise
-- Prioritize relevance over verbosity
-- Avoid generic textbook definitions
-- Explain important lines and logic clearly
-- Use markdown headings
-- Use bullet points where helpful
-- Include examples ONLY when they improve understanding
-- Sound like a senior engineer guiding a developer through a real codebase
+    instructions: BASE_ENGINEERING_SYSTEM_PROMPT,
 
-The student already saw this quick summary:
+    input: prompt,
+  });
+
+  return (response as any).output_text || "⚠️ No summary generated";
+}
+
+// 🔹 DETAILED EXPANSION
+
+async function getDetailedExpansion(
+  openai: OpenAI,
+
+  code: string,
+
+  language: string,
+
+  summary: string,
+
+  contextBlock: string,
+
+  detectedRole?: string,
+): Promise<string> {
+  const prompt = buildDeepExplainPrompt(
+    `
+Quick Summary:
 
 ${summary}
 
-Now expand deeply beyond that summary.
-
-${contextBlock}
-
 Code:
+
 ${code}
-`;
+`,
 
-    const response = await openai.responses.create({
-        model: "gpt-4.1-mini",
-        input: prompt,
-    });
+    language,
 
-    return (
-        (response as any).output_text ||
-        "⚠️ No detailed explanation generated"
-    );
+    contextBlock,
+
+    detectedRole,
+  );
+
+  const response = await openai.responses.create({
+    model: "gpt-4.1-mini",
+
+    instructions: BASE_ENGINEERING_SYSTEM_PROMPT,
+
+    input: prompt,
+  });
+
+  return (
+    (response as any).output_text || "⚠️ No detailed explanation generated"
+  );
 }
