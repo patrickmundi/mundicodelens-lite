@@ -1,0 +1,29 @@
+{
+  "globalEngineeringRules": [
+    "Preserve backward compatibility",
+    "Avoid unnecessary abstractions",
+    "Prefer readable code over clever code",
+    "Preserve tenant isolation",
+    "Maintain Django architectural conventions",
+    "Avoid breaking API contracts",
+    "Prioritize maintainability",
+    "Keep frontend templates accessible",
+    "Prefer incremental refactors",
+    "Protect authentication boundaries"
+  ],
+
+  "projectPatterns": [
+    "Service-layer architecture",
+    "Context-aware AI prompting",
+    "Role-aware engineering analysis",
+    "Domain-based project classification",
+    "Shared engineering intelligence"
+  ],
+
+  "criticalBusinessRules": [
+    "Tenant data must never leak across tenants",
+    "Authentication logic must remain secure",
+    "Financial calculations must remain deterministic",
+    "Translations must preserve multilingual support"
+  ]
+}

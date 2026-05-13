@@ -1,6 +1,9 @@
 export interface ProjectContextPayload {
   filePath: string;
+
   domain: string | null;
+
+  detectedRole?: string;
 
   description?: string;
 
@@ -13,4 +16,10 @@ export interface ProjectContextPayload {
   keywords?: string[];
 
   framework?: string[];
+
+  globalEngineeringRules?: string[];
+
+  projectPatterns?: string[];
+
+  criticalBusinessRules?: string[];
 }

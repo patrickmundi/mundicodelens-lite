@@ -2,60 +2,67 @@ import { ProjectDomainMap } from "../types/projectContext";
 
 export interface FileClassification {
   filePath: string;
+
   domain: string | null;
+
   confidence: number;
+
+  // 🔥 NEW
+  relatedDomains?: string[];
+
+  relatedFiles?: string[];
 }
 
 export function classifyFile(
   filePath: string,
-  domainMap: ProjectDomainMap
+  domainMap: ProjectDomainMap,
 ): FileClassification {
-
   const normalizedPath = filePath.toLowerCase();
 
   let bestDomain: string | null = null;
 
   let highestScore = 0;
 
-  for (const [domainName, metadata] of Object.entries(domainMap)) {
+  // 🔥 NEW
+  const relatedDomains: string[] = [];
 
+  // 🔥 NEW
+  const relatedFiles: string[] = [];
+
+  for (const [domainName, metadata] of Object.entries(domainMap)) {
     let score = 0;
 
-    // Strong path matching
+    // ✅ Strong path matching
     for (const expectedPath of metadata.expectedPaths) {
+      const normalizedExpectedPath = expectedPath.toLowerCase();
 
-      const normalizedExpectedPath =
-        expectedPath.toLowerCase();
-
-      if (
-        normalizedPath.includes(normalizedExpectedPath)
-      ) {
+      if (normalizedPath.includes(normalizedExpectedPath)) {
         score += 20;
+
+        // 🔥 Track relationships
+        relatedFiles.push(normalizedExpectedPath);
       }
     }
 
-    // Keyword matching
+    // ✅ Keyword matching
     for (const keyword of metadata.keywords) {
-
-      if (
-        normalizedPath.includes(
-          keyword.toLowerCase()
-        )
-      ) {
+      if (normalizedPath.includes(keyword.toLowerCase())) {
         score += 5;
       }
     }
 
-    // Exact folder/domain name bonus
-    if (
-      normalizedPath.includes(domainName.toLowerCase())
-    ) {
+    // ✅ Exact folder/domain bonus
+    if (normalizedPath.includes(domainName.toLowerCase())) {
       score += 30;
     }
 
-    // Track best domain
-    if (score > highestScore) {
+    // 🔥 Relationship awareness
+    if (score >= 15) {
+      relatedDomains.push(domainName);
+    }
 
+    // ✅ Best domain selection
+    if (score > highestScore) {
       highestScore = score;
 
       bestDomain = domainName;
@@ -64,7 +71,13 @@ export function classifyFile(
 
   return {
     filePath,
+
     domain: bestDomain,
-    confidence: highestScore
+
+    confidence: highestScore,
+
+    relatedDomains,
+
+    relatedFiles,
   };
 }
