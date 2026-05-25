@@ -1,0 +1,2887 @@
+{
+  "nodes": [
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+        "name": "openai.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "openai",
+      {
+        "id": "openai",
+        "name": "openai",
+        "type": "module",
+        "path": "openai",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "dotenv",
+      {
+        "id": "dotenv",
+        "name": "dotenv",
+        "type": "module",
+        "path": "dotenv",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "path",
+      {
+        "id": "path",
+        "name": "path",
+        "type": "module",
+        "path": "path",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "prompts/buildExplainPrompt",
+      {
+        "id": "prompts/buildExplainPrompt",
+        "name": "prompts/buildExplainPrompt",
+        "type": "module",
+        "path": "prompts/buildExplainPrompt",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "prompts/buildRefactorPrompt",
+      {
+        "id": "prompts/buildRefactorPrompt",
+        "name": "prompts/buildRefactorPrompt",
+        "type": "module",
+        "path": "prompts/buildRefactorPrompt",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "prompts/buildFixPrompt",
+      {
+        "id": "prompts/buildFixPrompt",
+        "name": "prompts/buildFixPrompt",
+        "type": "module",
+        "path": "prompts/buildFixPrompt",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "prompts/buildOptimizePrompt",
+      {
+        "id": "prompts/buildOptimizePrompt",
+        "name": "prompts/buildOptimizePrompt",
+        "type": "module",
+        "path": "prompts/buildOptimizePrompt",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "prompts/buildDeepExplainPrompt",
+      {
+        "id": "prompts/buildDeepExplainPrompt",
+        "name": "prompts/buildDeepExplainPrompt",
+        "type": "module",
+        "path": "prompts/buildDeepExplainPrompt",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "prompts/buildImplementationPrompt",
+      {
+        "id": "prompts/buildImplementationPrompt",
+        "name": "prompts/buildImplementationPrompt",
+        "type": "module",
+        "path": "prompts/buildImplementationPrompt",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "system/baseEngineeringSystemPrompt",
+      {
+        "id": "system/baseEngineeringSystemPrompt",
+        "name": "system/baseEngineeringSystemPrompt",
+        "type": "module",
+        "path": "system/baseEngineeringSystemPrompt",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildDeepExplainPrompt.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildDeepExplainPrompt.ts",
+        "name": "buildDeepExplainPrompt.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildDeepExplainPrompt.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "system/baseEngineeringRules",
+      {
+        "id": "system/baseEngineeringRules",
+        "name": "system/baseEngineeringRules",
+        "type": "module",
+        "path": "system/baseEngineeringRules",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "system/roleEngineeringRules",
+      {
+        "id": "system/roleEngineeringRules",
+        "name": "system/roleEngineeringRules",
+        "type": "module",
+        "path": "system/roleEngineeringRules",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildExplainPrompt.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildExplainPrompt.ts",
+        "name": "buildExplainPrompt.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildExplainPrompt.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildFixPrompt.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildFixPrompt.ts",
+        "name": "buildFixPrompt.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildFixPrompt.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildImplementationPrompt.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildImplementationPrompt.ts",
+        "name": "buildImplementationPrompt.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildImplementationPrompt.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildOptimizePrompt.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildOptimizePrompt.ts",
+        "name": "buildOptimizePrompt.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildOptimizePrompt.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildRefactorPrompt.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildRefactorPrompt.ts",
+        "name": "buildRefactorPrompt.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildRefactorPrompt.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/system/baseEngineeringRules.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/system/baseEngineeringRules.ts",
+        "name": "baseEngineeringRules.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/system/baseEngineeringRules.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/system/roleEngineeringRules.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/system/roleEngineeringRules.ts",
+        "name": "roleEngineeringRules.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/system/roleEngineeringRules.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/system/baseEngineeringSystemPrompt.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/system/baseEngineeringSystemPrompt.ts",
+        "name": "baseEngineeringSystemPrompt.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/system/baseEngineeringSystemPrompt.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "responseFormattingRules",
+      {
+        "id": "responseFormattingRules",
+        "name": "responseFormattingRules",
+        "type": "module",
+        "path": "responseFormattingRules",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.151Z",
+        "updatedAt": "2026-05-25T17:01:49.151Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/system/responseFormattingRules.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/system/responseFormattingRules.ts",
+        "name": "responseFormattingRules.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/system/responseFormattingRules.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explain.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explain.ts",
+        "name": "explain.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explain.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "vscode",
+      {
+        "id": "vscode",
+        "name": "vscode",
+        "type": "module",
+        "path": "vscode",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../core/runAICommand",
+      {
+        "id": "../core/runAICommand",
+        "name": "../core/runAICommand",
+        "type": "module",
+        "path": "../core/runAICommand",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explainFull.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explainFull.ts",
+        "name": "explainFull.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explainFull.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/fixBug.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/fixBug.ts",
+        "name": "fixBug.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/fixBug.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/implement.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/implement.ts",
+        "name": "implement.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/implement.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/optimize.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/optimize.ts",
+        "name": "optimize.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/optimize.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/refactor.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/refactor.ts",
+        "name": "refactor.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/refactor.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts",
+        "name": "projectContextBuilder.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../memory/domainMapLoader",
+      {
+        "id": "../memory/domainMapLoader",
+        "name": "../memory/domainMapLoader",
+        "type": "module",
+        "path": "../memory/domainMapLoader",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../memory/engineeringMemoryLoader",
+      {
+        "id": "../memory/engineeringMemoryLoader",
+        "name": "../memory/engineeringMemoryLoader",
+        "type": "module",
+        "path": "../memory/engineeringMemoryLoader",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../extractors/relatedFileExtractor",
+      {
+        "id": "../extractors/relatedFileExtractor",
+        "name": "../extractors/relatedFileExtractor",
+        "type": "module",
+        "path": "../extractors/relatedFileExtractor",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../types/projectContextPayload",
+      {
+        "id": "../types/projectContextPayload",
+        "name": "../types/projectContextPayload",
+        "type": "module",
+        "path": "../types/projectContextPayload",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../scanner/fileClassifier",
+      {
+        "id": "../scanner/fileClassifier",
+        "name": "../scanner/fileClassifier",
+        "type": "module",
+        "path": "../scanner/fileClassifier",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../extractors/relatedContentExtractor",
+      {
+        "id": "../extractors/relatedContentExtractor",
+        "name": "../extractors/relatedContentExtractor",
+        "type": "module",
+        "path": "../extractors/relatedContentExtractor",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/promptContextFormatter.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/promptContextFormatter.ts",
+        "name": "promptContextFormatter.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/promptContextFormatter.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedContentExtractor.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedContentExtractor.ts",
+        "name": "relatedContentExtractor.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedContentExtractor.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "fs",
+      {
+        "id": "fs",
+        "name": "fs",
+        "type": "module",
+        "path": "fs",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedFileExtractor.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedFileExtractor.ts",
+        "name": "relatedFileExtractor.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedFileExtractor.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/domainMapLoader.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/domainMapLoader.ts",
+        "name": "domainMapLoader.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/domainMapLoader.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../types/projectContext",
+      {
+        "id": "../types/projectContext",
+        "name": "../types/projectContext",
+        "type": "module",
+        "path": "../types/projectContext",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/engineeringMemoryLoader.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/engineeringMemoryLoader.ts",
+        "name": "engineeringMemoryLoader.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/engineeringMemoryLoader.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/fileClassifier.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/fileClassifier.ts",
+        "name": "fileClassifier.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/fileClassifier.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts",
+        "name": "workspaceScanner.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "fileClassifier",
+      {
+        "id": "fileClassifier",
+        "name": "fileClassifier",
+        "type": "module",
+        "path": "fileClassifier",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/types/projectContext.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/types/projectContext.ts",
+        "name": "projectContext.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/types/projectContext.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/types/projectContextPayload.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/types/projectContextPayload.ts",
+        "name": "projectContextPayload.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/types/projectContextPayload.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts",
+        "name": "runAICommand.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../ai/openai",
+      {
+        "id": "../ai/openai",
+        "name": "../ai/openai",
+        "type": "module",
+        "path": "../ai/openai",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../context/builders/projectContextBuilder",
+      {
+        "id": "../context/builders/projectContextBuilder",
+        "name": "../context/builders/projectContextBuilder",
+        "type": "module",
+        "path": "../context/builders/projectContextBuilder",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../context/builders/promptContextFormatter",
+      {
+        "id": "../context/builders/promptContextFormatter",
+        "name": "../context/builders/promptContextFormatter",
+        "type": "module",
+        "path": "../context/builders/promptContextFormatter",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../utils/parser",
+      {
+        "id": "../utils/parser",
+        "name": "../utils/parser",
+        "type": "module",
+        "path": "../utils/parser",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../utils/webview",
+      {
+        "id": "../utils/webview",
+        "name": "../utils/webview",
+        "type": "module",
+        "path": "../utils/webview",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts",
+        "name": "extension.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "providers/CodeLensProvider",
+      {
+        "id": "providers/CodeLensProvider",
+        "name": "providers/CodeLensProvider",
+        "type": "module",
+        "path": "providers/CodeLensProvider",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "commands/explain",
+      {
+        "id": "commands/explain",
+        "name": "commands/explain",
+        "type": "module",
+        "path": "commands/explain",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "commands/explainFull",
+      {
+        "id": "commands/explainFull",
+        "name": "commands/explainFull",
+        "type": "module",
+        "path": "commands/explainFull",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "commands/refactor",
+      {
+        "id": "commands/refactor",
+        "name": "commands/refactor",
+        "type": "module",
+        "path": "commands/refactor",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "commands/fixBug",
+      {
+        "id": "commands/fixBug",
+        "name": "commands/fixBug",
+        "type": "module",
+        "path": "commands/fixBug",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "commands/optimize",
+      {
+        "id": "commands/optimize",
+        "name": "commands/optimize",
+        "type": "module",
+        "path": "commands/optimize",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "commands/implement",
+      {
+        "id": "commands/implement",
+        "name": "commands/implement",
+        "type": "module",
+        "path": "commands/implement",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/providers/CodeLensProvider.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/providers/CodeLensProvider.ts",
+        "name": "CodeLensProvider.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/providers/CodeLensProvider.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/dependency-scanner.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/dependency-scanner.ts",
+        "name": "dependency-scanner.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/dependency-scanner.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "file-indexer",
+      {
+        "id": "file-indexer",
+        "name": "file-indexer",
+        "type": "module",
+        "path": "file-indexer",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "import-parser",
+      {
+        "id": "import-parser",
+        "name": "import-parser",
+        "type": "module",
+        "path": "import-parser",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/file-indexer.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/file-indexer.ts",
+        "name": "file-indexer.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/file-indexer.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts",
+        "name": "graph-builder.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "dependency-scanner",
+      {
+        "id": "dependency-scanner",
+        "name": "dependency-scanner",
+        "type": "module",
+        "path": "dependency-scanner",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../models/graph-edge",
+      {
+        "id": "../models/graph-edge",
+        "name": "../models/graph-edge",
+        "type": "module",
+        "path": "../models/graph-edge",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../models/graph-node",
+      {
+        "id": "../models/graph-node",
+        "name": "../models/graph-node",
+        "type": "module",
+        "path": "../models/graph-node",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../models/repository-graph",
+      {
+        "id": "../models/repository-graph",
+        "name": "../models/repository-graph",
+        "type": "module",
+        "path": "../models/repository-graph",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/import-parser.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/import-parser.ts",
+        "name": "import-parser.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/import-parser.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "ts-morph",
+      {
+        "id": "ts-morph",
+        "name": "ts-morph",
+        "type": "module",
+        "path": "ts-morph",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/index.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/index.ts",
+        "name": "index.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/index.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "services/graph-sync-service",
+      {
+        "id": "services/graph-sync-service",
+        "name": "services/graph-sync-service",
+        "type": "module",
+        "path": "services/graph-sync-service",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "services/repository-watch-service",
+      {
+        "id": "services/repository-watch-service",
+        "name": "services/repository-watch-service",
+        "type": "module",
+        "path": "services/repository-watch-service",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/architecture-node.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/architecture-node.ts",
+        "name": "architecture-node.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/architecture-node.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "graph-node",
+      {
+        "id": "graph-node",
+        "name": "graph-node",
+        "type": "module",
+        "path": "graph-node",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/graph-edge.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/graph-edge.ts",
+        "name": "graph-edge.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/graph-edge.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/graph-node.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/graph-node.ts",
+        "name": "graph-node.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/graph-node.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/repository-graph.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/repository-graph.ts",
+        "name": "repository-graph.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/repository-graph.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "graph-edge",
+      {
+        "id": "graph-edge",
+        "name": "graph-edge",
+        "type": "module",
+        "path": "graph-edge",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/architecture-query.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/architecture-query.ts",
+        "name": "architecture-query.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/architecture-query.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/dependency-query.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/dependency-query.ts",
+        "name": "dependency-query.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/dependency-query.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/impact-analysis.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/impact-analysis.ts",
+        "name": "impact-analysis.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/impact-analysis.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/graph-sync-service.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/graph-sync-service.ts",
+        "name": "graph-sync-service.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/graph-sync-service.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../builder/graph-builder",
+      {
+        "id": "../builder/graph-builder",
+        "name": "../builder/graph-builder",
+        "type": "module",
+        "path": "../builder/graph-builder",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../storage/graph-cache",
+      {
+        "id": "../storage/graph-cache",
+        "name": "../storage/graph-cache",
+        "type": "module",
+        "path": "../storage/graph-cache",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "../storage/graph-store",
+      {
+        "id": "../storage/graph-store",
+        "name": "../storage/graph-store",
+        "type": "module",
+        "path": "../storage/graph-store",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.152Z",
+        "updatedAt": "2026-05-25T17:01:49.152Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/repository-watch-service.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/repository-watch-service.ts",
+        "name": "repository-watch-service.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/repository-watch-service.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "graph-sync-service",
+      {
+        "id": "graph-sync-service",
+        "name": "graph-sync-service",
+        "type": "module",
+        "path": "graph-sync-service",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-cache.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-cache.ts",
+        "name": "graph-cache.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-cache.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-store.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-store.ts",
+        "name": "graph-store.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-store.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/test-runtime.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/test-runtime.ts",
+        "name": "test-runtime.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/test-runtime.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "builder/graph-builder",
+      {
+        "id": "builder/graph-builder",
+        "name": "builder/graph-builder",
+        "type": "module",
+        "path": "builder/graph-builder",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "queries/dependency-query",
+      {
+        "id": "queries/dependency-query",
+        "name": "queries/dependency-query",
+        "type": "module",
+        "path": "queries/dependency-query",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/extension.test.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/extension.test.ts",
+        "name": "extension.test.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/extension.test.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "assert",
+      {
+        "id": "assert",
+        "name": "assert",
+        "type": "module",
+        "path": "assert",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testProjectContext.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testProjectContext.ts",
+        "name": "testProjectContext.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testProjectContext.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testPromptFormatter.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testPromptFormatter.ts",
+        "name": "testPromptFormatter.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testPromptFormatter.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testScanner.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testScanner.ts",
+        "name": "testScanner.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testScanner.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "../context/scanner/workspaceScanner",
+      {
+        "id": "../context/scanner/workspaceScanner",
+        "name": "../context/scanner/workspaceScanner",
+        "type": "module",
+        "path": "../context/scanner/workspaceScanner",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/formatter.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/formatter.ts",
+        "name": "formatter.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/formatter.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/parser.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/parser.ts",
+        "name": "parser.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/parser.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/webview.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/webview.ts",
+        "name": "webview.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/webview.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "markdown-it",
+      {
+        "id": "markdown-it",
+        "name": "markdown-it",
+        "type": "module",
+        "path": "markdown-it",
+        "metadata": {
+          "external": true
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ],
+    [
+      "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/webview/panel.ts",
+      {
+        "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/webview/panel.ts",
+        "name": "panel.ts",
+        "type": "file",
+        "path": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/webview/panel.ts",
+        "metadata": {
+          "extension": ".ts"
+        },
+        "createdAt": "2026-05-25T17:01:49.153Z",
+        "updatedAt": "2026-05-25T17:01:49.153Z"
+      }
+    ]
+  ],
+  "edges": [
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts->openai",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+      "to": "openai",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts->dotenv",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+      "to": "dotenv",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts->prompts/buildExplainPrompt",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+      "to": "prompts/buildExplainPrompt",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts->prompts/buildRefactorPrompt",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+      "to": "prompts/buildRefactorPrompt",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts->prompts/buildFixPrompt",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+      "to": "prompts/buildFixPrompt",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts->prompts/buildOptimizePrompt",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+      "to": "prompts/buildOptimizePrompt",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts->prompts/buildDeepExplainPrompt",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+      "to": "prompts/buildDeepExplainPrompt",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts->prompts/buildImplementationPrompt",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+      "to": "prompts/buildImplementationPrompt",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts->system/baseEngineeringSystemPrompt",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/openai.ts",
+      "to": "system/baseEngineeringSystemPrompt",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildDeepExplainPrompt.ts->system/baseEngineeringRules",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildDeepExplainPrompt.ts",
+      "to": "system/baseEngineeringRules",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildDeepExplainPrompt.ts->system/roleEngineeringRules",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildDeepExplainPrompt.ts",
+      "to": "system/roleEngineeringRules",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildExplainPrompt.ts->system/baseEngineeringRules",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildExplainPrompt.ts",
+      "to": "system/baseEngineeringRules",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildExplainPrompt.ts->system/roleEngineeringRules",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildExplainPrompt.ts",
+      "to": "system/roleEngineeringRules",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildFixPrompt.ts->system/baseEngineeringRules",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildFixPrompt.ts",
+      "to": "system/baseEngineeringRules",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildFixPrompt.ts->system/roleEngineeringRules",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildFixPrompt.ts",
+      "to": "system/roleEngineeringRules",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildImplementationPrompt.ts->system/roleEngineeringRules",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildImplementationPrompt.ts",
+      "to": "system/roleEngineeringRules",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildOptimizePrompt.ts->system/baseEngineeringRules",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildOptimizePrompt.ts",
+      "to": "system/baseEngineeringRules",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildOptimizePrompt.ts->system/roleEngineeringRules",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildOptimizePrompt.ts",
+      "to": "system/roleEngineeringRules",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildRefactorPrompt.ts->system/baseEngineeringRules",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildRefactorPrompt.ts",
+      "to": "system/baseEngineeringRules",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildRefactorPrompt.ts->system/roleEngineeringRules",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/prompts/buildRefactorPrompt.ts",
+      "to": "system/roleEngineeringRules",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/system/baseEngineeringSystemPrompt.ts->responseFormattingRules",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/ai/system/baseEngineeringSystemPrompt.ts",
+      "to": "responseFormattingRules",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.151Z",
+      "updatedAt": "2026-05-25T17:01:49.151Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explain.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explain.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explain.ts->../core/runAICommand",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explain.ts",
+      "to": "../core/runAICommand",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explainFull.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explainFull.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explainFull.ts->../core/runAICommand",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/explainFull.ts",
+      "to": "../core/runAICommand",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/fixBug.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/fixBug.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/fixBug.ts->../core/runAICommand",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/fixBug.ts",
+      "to": "../core/runAICommand",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/implement.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/implement.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/implement.ts->../core/runAICommand",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/implement.ts",
+      "to": "../core/runAICommand",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/optimize.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/optimize.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/optimize.ts->../core/runAICommand",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/optimize.ts",
+      "to": "../core/runAICommand",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/refactor.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/refactor.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/refactor.ts->../core/runAICommand",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/commands/refactor.ts",
+      "to": "../core/runAICommand",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts->../memory/domainMapLoader",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts",
+      "to": "../memory/domainMapLoader",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts->../memory/engineeringMemoryLoader",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts",
+      "to": "../memory/engineeringMemoryLoader",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts->../extractors/relatedFileExtractor",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts",
+      "to": "../extractors/relatedFileExtractor",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts->../types/projectContextPayload",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts",
+      "to": "../types/projectContextPayload",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts->../scanner/fileClassifier",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts",
+      "to": "../scanner/fileClassifier",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts->../extractors/relatedContentExtractor",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/projectContextBuilder.ts",
+      "to": "../extractors/relatedContentExtractor",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/promptContextFormatter.ts->../types/projectContextPayload",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/builders/promptContextFormatter.ts",
+      "to": "../types/projectContextPayload",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedContentExtractor.ts->fs",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedContentExtractor.ts",
+      "to": "fs",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedContentExtractor.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedContentExtractor.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedFileExtractor.ts->fs",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedFileExtractor.ts",
+      "to": "fs",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedFileExtractor.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/extractors/relatedFileExtractor.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/domainMapLoader.ts->fs",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/domainMapLoader.ts",
+      "to": "fs",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/domainMapLoader.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/domainMapLoader.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/domainMapLoader.ts->../types/projectContext",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/domainMapLoader.ts",
+      "to": "../types/projectContext",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/engineeringMemoryLoader.ts->fs",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/engineeringMemoryLoader.ts",
+      "to": "fs",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/engineeringMemoryLoader.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/memory/engineeringMemoryLoader.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/fileClassifier.ts->../types/projectContext",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/fileClassifier.ts",
+      "to": "../types/projectContext",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts->fs",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts",
+      "to": "fs",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts->../memory/domainMapLoader",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts",
+      "to": "../memory/domainMapLoader",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts->fileClassifier",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts",
+      "to": "fileClassifier",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts->../types/projectContext",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/context/scanner/workspaceScanner.ts",
+      "to": "../types/projectContext",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts->../ai/openai",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts",
+      "to": "../ai/openai",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts->../context/builders/projectContextBuilder",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts",
+      "to": "../context/builders/projectContextBuilder",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts->../context/builders/promptContextFormatter",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts",
+      "to": "../context/builders/promptContextFormatter",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts->../utils/parser",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts",
+      "to": "../utils/parser",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts->../utils/webview",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/core/runAICommand.ts",
+      "to": "../utils/webview",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts->providers/CodeLensProvider",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts",
+      "to": "providers/CodeLensProvider",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts->commands/explain",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts",
+      "to": "commands/explain",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts->commands/explainFull",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts",
+      "to": "commands/explainFull",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts->commands/refactor",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts",
+      "to": "commands/refactor",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts->commands/fixBug",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts",
+      "to": "commands/fixBug",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts->commands/optimize",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts",
+      "to": "commands/optimize",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts->commands/implement",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/extension.ts",
+      "to": "commands/implement",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/providers/CodeLensProvider.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/providers/CodeLensProvider.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/dependency-scanner.ts->file-indexer",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/dependency-scanner.ts",
+      "to": "file-indexer",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/dependency-scanner.ts->import-parser",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/dependency-scanner.ts",
+      "to": "import-parser",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/file-indexer.ts->fs",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/file-indexer.ts",
+      "to": "fs",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/file-indexer.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/file-indexer.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts->dependency-scanner",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts",
+      "to": "dependency-scanner",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts->../models/graph-edge",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts",
+      "to": "../models/graph-edge",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": true
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts->../models/graph-node",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts",
+      "to": "../models/graph-node",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": true
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts->../models/repository-graph",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/graph-builder.ts",
+      "to": "../models/repository-graph",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": true
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/import-parser.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/import-parser.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/import-parser.ts->ts-morph",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/builder/import-parser.ts",
+      "to": "ts-morph",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/index.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/index.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/index.ts->services/graph-sync-service",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/index.ts",
+      "to": "services/graph-sync-service",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/index.ts->services/repository-watch-service",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/index.ts",
+      "to": "services/repository-watch-service",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/architecture-node.ts->graph-node",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/architecture-node.ts",
+      "to": "graph-node",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": true
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/repository-graph.ts->graph-edge",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/repository-graph.ts",
+      "to": "graph-edge",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": true
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/repository-graph.ts->graph-node",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/models/repository-graph.ts",
+      "to": "graph-node",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": true
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/dependency-query.ts->../models/graph-edge",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/dependency-query.ts",
+      "to": "../models/graph-edge",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": true
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/dependency-query.ts->../models/repository-graph",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/queries/dependency-query.ts",
+      "to": "../models/repository-graph",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": true
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/graph-sync-service.ts->../builder/graph-builder",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/graph-sync-service.ts",
+      "to": "../builder/graph-builder",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/graph-sync-service.ts->../storage/graph-cache",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/graph-sync-service.ts",
+      "to": "../storage/graph-cache",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.152Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/graph-sync-service.ts->../storage/graph-store",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/graph-sync-service.ts",
+      "to": "../storage/graph-store",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.152Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/graph-sync-service.ts->../models/repository-graph",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/graph-sync-service.ts",
+      "to": "../models/repository-graph",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": true
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/repository-watch-service.ts->graph-sync-service",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/services/repository-watch-service.ts",
+      "to": "graph-sync-service",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-cache.ts->../models/repository-graph",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-cache.ts",
+      "to": "../models/repository-graph",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": true
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-store.ts->fs",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-store.ts",
+      "to": "fs",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-store.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-store.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-store.ts->../models/repository-graph",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/storage/graph-store.ts",
+      "to": "../models/repository-graph",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": true
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/test-runtime.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/test-runtime.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/test-runtime.ts->builder/graph-builder",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/test-runtime.ts",
+      "to": "builder/graph-builder",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/test-runtime.ts->queries/dependency-query",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/runtime/graph/test-runtime.ts",
+      "to": "queries/dependency-query",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/extension.test.ts->assert",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/extension.test.ts",
+      "to": "assert",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/extension.test.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/extension.test.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testProjectContext.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testProjectContext.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testProjectContext.ts->../context/builders/projectContextBuilder",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testProjectContext.ts",
+      "to": "../context/builders/projectContextBuilder",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testPromptFormatter.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testPromptFormatter.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testPromptFormatter.ts->../context/builders/projectContextBuilder",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testPromptFormatter.ts",
+      "to": "../context/builders/projectContextBuilder",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testPromptFormatter.ts->../context/builders/promptContextFormatter",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testPromptFormatter.ts",
+      "to": "../context/builders/promptContextFormatter",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testScanner.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testScanner.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testScanner.ts->../context/scanner/workspaceScanner",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/test/testScanner.ts",
+      "to": "../context/scanner/workspaceScanner",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/parser.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/parser.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/webview.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/webview.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/webview.ts->fs",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/webview.ts",
+      "to": "fs",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/webview.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/webview.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/webview.ts->markdown-it",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/utils/webview.ts",
+      "to": "markdown-it",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/webview/panel.ts->vscode",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/webview/panel.ts",
+      "to": "vscode",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/webview/panel.ts->fs",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/webview/panel.ts",
+      "to": "fs",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    },
+    {
+      "id": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/webview/panel.ts->path",
+      "from": "C:/Users/Pat/MundiProjects/mundicodelens-lite/src/webview/panel.ts",
+      "to": "path",
+      "relationship": "imports",
+      "metadata": {
+        "isTypeOnly": false
+      },
+      "createdAt": "2026-05-25T17:01:49.153Z",
+      "updatedAt": "2026-05-25T17:01:49.153Z"
+    }
+  ],
+  "metadata": {
+    "totalFiles": 111,
+    "totalDependencies": 120,
+    "lastScannedAt": "2026-05-25T17:01:49.153Z"
+  },
+  "createdAt": "2026-05-25T17:01:49.153Z",
+  "updatedAt": "2026-05-25T17:01:49.153Z"
+}
