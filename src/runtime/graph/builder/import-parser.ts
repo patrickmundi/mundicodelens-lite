@@ -1,4 +1,5 @@
 import path from "path";
+
 import {
   Project,
   SourceFile,
@@ -8,21 +9,35 @@ import {
 
 export interface ParsedImport {
   moduleSpecifier: string;
+
   namedImports: string[];
+
   defaultImport?: string;
+
   namespaceImport?: string;
+
   isTypeOnly: boolean;
+
+  isRelative: boolean;
+
+  isExternal: boolean;
+
+  resolvedCandidatePath?: string;
 }
 
 export interface ParsedExport {
   moduleSpecifier?: string;
+
   namedExports: string[];
+
   isTypeOnly: boolean;
 }
 
 export interface ParsedFileDependencies {
   filePath: string;
+
   imports: ParsedImport[];
+
   exports: ParsedExport[];
 }
 
@@ -51,35 +66,56 @@ export class ImportParser {
 
     return {
       filePath: normalizedPath,
+
       imports: this.extractImports(sourceFile),
+
       exports: this.extractExports(sourceFile),
     };
   }
 
   /**
-   * Extracts import declarations from a source file.
+   * Extracts import declarations
+   * from a source file.
    */
   private extractImports(sourceFile: SourceFile): ParsedImport[] {
-    return sourceFile.getImportDeclarations().map((importDecl) => {
-      return this.parseImportDeclaration(importDecl);
-    });
+    return sourceFile
+      .getImportDeclarations()
+      .map((importDecl) => this.parseImportDeclaration(importDecl));
   }
 
   /**
-   * Extracts export declarations from a source file.
+   * Extracts export declarations
+   * from a source file.
    */
   private extractExports(sourceFile: SourceFile): ParsedExport[] {
-    return sourceFile.getExportDeclarations().map((exportDecl) => {
-      return this.parseExportDeclaration(exportDecl);
-    });
+    return sourceFile
+      .getExportDeclarations()
+      .map((exportDecl) => this.parseExportDeclaration(exportDecl));
   }
 
   /**
    * Parses a single import declaration.
    */
   private parseImportDeclaration(importDecl: ImportDeclaration): ParsedImport {
+    const moduleSpecifier = importDecl.getModuleSpecifierValue();
+
+    const isRelative =
+      moduleSpecifier.startsWith("./") || moduleSpecifier.startsWith("../");
+
+    const sourceFile = importDecl.getSourceFile();
+
+    const sourceDirectory = path.dirname(sourceFile.getFilePath());
+
+    let resolvedCandidatePath: string | undefined;
+
+    if (isRelative) {
+      resolvedCandidatePath = this.normalizePath(
+        path.resolve(sourceDirectory, moduleSpecifier),
+      );
+    }
+
     return {
-      moduleSpecifier: importDecl.getModuleSpecifierValue(),
+      moduleSpecifier,
 
       namedImports: importDecl
         .getNamedImports()
@@ -90,6 +126,12 @@ export class ImportParser {
       namespaceImport: importDecl.getNamespaceImport()?.getText(),
 
       isTypeOnly: importDecl.isTypeOnly(),
+
+      isRelative,
+
+      isExternal: !isRelative,
+
+      resolvedCandidatePath,
     };
   }
 
