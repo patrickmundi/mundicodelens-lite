@@ -14,6 +14,8 @@ import { buildOptimizePrompt } from "./prompts/buildOptimizePrompt";
 
 import { buildDeepExplainPrompt } from "./prompts/buildDeepExplainPrompt";
 
+import { buildImplementationPrompt } from "./prompts/buildImplementationPrompt";
+
 import { BASE_ENGINEERING_SYSTEM_PROMPT } from "./system/baseEngineeringSystemPrompt";
 
 // 🔥 Load environment variables
@@ -47,7 +49,13 @@ function getOpenAI(): OpenAI {
 export async function getAIResponse(
   code: string,
 
-  action: "explain" | "deepExplain" | "refactor" | "fix" | "optimize",
+  action:
+    | "explain"
+    | "deepExplain"
+    | "refactor"
+    | "fix"
+    | "optimize"
+    | "implement",
 
   language: string,
 
@@ -158,6 +166,19 @@ ${detailedExplanation}
 
       case "optimize":
         prompt = buildOptimizePrompt(
+          code,
+
+          language,
+
+          contextBlock,
+
+          detectedRole,
+        );
+
+        break;
+
+      case "implement":
+        prompt = buildImplementationPrompt(
           code,
 
           language,

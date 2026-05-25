@@ -3,17 +3,25 @@ import * as path from "path";
 import { loadDomainMap } from "../memory/domainMapLoader";
 
 import { loadEngineeringMemory } from "../memory/engineeringMemoryLoader";
+
+import { extractRelatedFiles } from "../extractors/relatedFileExtractor";
+
 import { ProjectContextPayload } from "../types/projectContextPayload";
 
 import { classifyFile } from "../scanner/fileClassifier";
 
+import { extractRelatedContent } from "../extractors/relatedContentExtractor";
+
 export function buildProjectContext(
   workspaceRoot: string,
+
   filePath: string,
 ): ProjectContextPayload {
   const domainMap = loadDomainMap(workspaceRoot);
 
   const engineeringMemory = loadEngineeringMemory(workspaceRoot);
+
+  const relatedFilesContext = extractRelatedFiles(workspaceRoot, filePath);
 
   const classification = classifyFile(filePath, domainMap);
 
@@ -21,6 +29,12 @@ export function buildProjectContext(
 
   const normalizedPath = filePath.replace(/\\/g, "/");
 
+  const relatedFilesResult = extractRelatedFiles(workspaceRoot, filePath);
+
+  const relatedContentResult = extractRelatedContent(
+    workspaceRoot,
+    relatedFilesResult.relatedFiles,
+  );
   // 🔥 FILE ROLE DETECTION
 
   let detectedRole = "general";
@@ -71,11 +85,15 @@ export function buildProjectContext(
 
       detectedRole,
 
+      relatedFiles: relatedFilesContext.relatedFiles,
+
       globalEngineeringRules: engineeringMemory.globalEngineeringRules,
 
       projectPatterns: engineeringMemory.projectPatterns,
 
       criticalBusinessRules: engineeringMemory.criticalBusinessRules,
+
+      relatedFileSnippets: relatedContentResult.snippets,
     };
   }
 
@@ -89,6 +107,8 @@ export function buildProjectContext(
     domain,
 
     detectedRole,
+
+    relatedFiles: relatedFilesContext.relatedFiles,
 
     description: metadata.description,
 
@@ -107,5 +127,7 @@ export function buildProjectContext(
     projectPatterns: engineeringMemory.projectPatterns,
 
     criticalBusinessRules: engineeringMemory.criticalBusinessRules,
+
+    relatedFileSnippets: relatedContentResult.snippets,
   };
 }

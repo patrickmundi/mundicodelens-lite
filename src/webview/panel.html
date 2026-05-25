@@ -1,62 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-
+  <head>
     <meta charset="UTF-8" />
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>MundiCodeLens AI</title>
 
-    <link
-        rel="stylesheet"
-        href="{{styleUri}}"
-    />
+    <link rel="stylesheet" href="{{styleUri}}" />
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <div class="container">
+      <!-- 🔹 Header -->
 
-        <h1>🚀 MundiCodeLens AI</h1>
+      <div class="hero">
+        <div class="hero-top">
+          <div class="logo">🚀</div>
 
-        <div class="section">
+          <div>
+            <h1>MundiCodeLens AI</h1>
 
-            <div class="badge">
-                SOURCE
-            </div>
+            <p class="hero-subtitle">Context-aware AI engineering assistant</p>
+          </div>
+        </div>
+      </div>
 
-            <h2>📌 Selected Code</h2>
+      <!-- 🔹 Source Code Section -->
 
-            <pre><code>{{code}}</code></pre>
-
+      <div class="section">
+        <div class="section-top">
+          <div class="badge">SOURCE</div>
         </div>
 
-        <div class="section">
+        <h2>📌 Selected Code</h2>
 
-            <div class="badge">
-                AI ANALYSIS
-            </div>
+        <div class="code-card">
+          <pre><code>{{code}}</code></pre>
+        </div>
+      </div>
 
-            <h2>{{panelTitle}}</h2>
+      <!-- 🔹 AI Analysis -->
 
-            <p class="subtitle">
-                {{panelSubtitle}}
-            </p>
-
-            <div class="response">
-                {{response}}
-            </div>
-
+      <div class="section">
+        <div class="section-top">
+          <div class="badge">{{badge}}</div>
         </div>
 
+        <h2>{{panelTitle}}</h2>
+
+        <p class="subtitle">{{panelSubtitle}}</p>
+
+        <div class="response-card">
+          <div class="response">{{response}}</div>
+        </div>
+      </div>
+
+      <!-- 🔹 Footer -->
+
+      <div class="footer">
+        <p>MundiCodeLens Lite • AI-assisted engineering workflow</p>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>

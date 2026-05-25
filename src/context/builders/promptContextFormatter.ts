@@ -59,7 +59,7 @@ export function formatPromptContext(context: ProjectContextPayload): string {
     }
   }
 
-  // 🔥 Global engineering memory
+  // 🔥 Global engineering rules
 
   if (
     context.globalEngineeringRules &&
@@ -92,6 +92,26 @@ export function formatPromptContext(context: ProjectContextPayload): string {
 
     for (const rule of context.criticalBusinessRules) {
       sections.push(`- ${rule}`);
+    }
+  }
+
+  // 🔥 Related files
+
+  if (context.relatedFiles && context.relatedFiles.length > 0) {
+    sections.push("Related Files:");
+
+    for (const file of context.relatedFiles) {
+      sections.push(`- ${file}`);
+    }
+  }
+
+  // 🔥 Related file snippets
+
+  if (context.relatedFileSnippets && context.relatedFileSnippets.length > 0) {
+    sections.push("Related File Context:");
+
+    for (const snippet of context.relatedFileSnippets) {
+      sections.push(snippet);
     }
   }
 

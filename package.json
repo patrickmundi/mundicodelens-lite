@@ -19,6 +19,26 @@
       {
         "command": "mundicodelens-lite.explainCode",
         "title": "Explain Code with MundiCodeLens Lite"
+      },
+      {
+        "command": "mundicodelens-lite.explainFull",
+        "title": "Full Explanation"
+      },
+      {
+        "command": "mundicodelens-lite.refactor",
+        "title": "Refactor Code"
+      },
+      {
+        "command": "mundicodelens-lite.fix",
+        "title": "Fix Bug"
+      },
+      {
+        "command": "mundicodelens-lite.optimize",
+        "title": "Optimize Code"
+      },
+      {
+        "command": "mundicodelens-lite.implement",
+        "title": "Implement Feature"
       }
     ]
   },
@@ -42,9 +62,11 @@
     "typescript-eslint": "^8.56.1"
   },
   "dependencies": {
+    "chokidar": "^5.0.0",
     "dotenv": "^17.4.2",
     "markdown-it": "^14.1.1",
     "marked": "^18.0.3",
-    "openai": "^6.35.0"
+    "openai": "^6.35.0",
+    "ts-morph": "^28.0.0"
   }
 }

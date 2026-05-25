@@ -1,4 +1,5 @@
 import * as fs from "fs";
+
 import * as path from "path";
 
 export interface RelatedFilesContext {
@@ -20,17 +21,11 @@ export function extractRelatedFiles(
 
   const djangoPairs = [
     "models.py",
-
     "views.py",
-
     "urls.py",
-
     "forms.py",
-
     "serializers.py",
-
     "services.py",
-
     "admin.py",
   ];
 

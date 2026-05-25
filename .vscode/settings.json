@@ -1,25 +1,41 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-	"files.exclude": {
-		"out": false
-	},
+  "files.exclude": {
+    "out": false
+  },
 
-	"search.exclude": {
-		"out": true
-	},
+  "search.exclude": {
+    "out": true
+  },
 
-	// Turn off tsc task auto detection since we have the necessary tasks as npm scripts
-	"typescript.tsc.autoDetect": "off",
+  // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
+  "typescript.tsc.autoDetect": "off",
 
-	"terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.persistentSessionReviveProcess": "never",
 
-	// ===== MundiCodeLens UX =====
+  // ===== MundiCodeLens UX =====
 
-	"editor.codeLens": true,
+  "editor.codeLens": true,
 
-	"editor.codeLensFontSize": 11,
+  "editor.codeLensFontSize": 11,
 
-	"editor.codeLensFontFamily": "Consolas",
+  "editor.codeLensFontFamily": "Consolas",
 
-	"editor.codeLensLineHeight": 16
+  "editor.codeLensLineHeight": 16,
+
+  // ===== Auto Formatting =====
+
+  "editor.formatOnSave": true,
+
+  "editor.formatOnPaste": true,
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

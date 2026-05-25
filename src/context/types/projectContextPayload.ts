@@ -22,4 +22,8 @@ export interface ProjectContextPayload {
   projectPatterns?: string[];
 
   criticalBusinessRules?: string[];
+
+  relatedFiles?: string[];
+
+  relatedFileSnippets?: string[];
 }

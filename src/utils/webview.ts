@@ -1,7 +1,7 @@
-import * as vscode from 'vscode';
-import * as fs from 'fs';
-import * as path from 'path';
-import MarkdownIt from 'markdown-it';
+import * as vscode from "vscode";
+import * as fs from "fs";
+import * as path from "path";
+import MarkdownIt from "markdown-it";
 
 const md = new MarkdownIt();
 
@@ -10,233 +10,159 @@ let currentPanel: vscode.WebviewPanel | undefined;
 
 // 🔹 HTML UI
 export function getWebviewContent(
-	context: vscode.ExtensionContext,
-	webview: vscode.Webview,
-	response: string,
-	code: string,
-	mode: string
+  context: vscode.ExtensionContext,
+  webview: vscode.Webview,
+  response: string,
+  code: string,
+  mode: string,
 ): string {
+  const filePath = path.join(
+    context.extensionPath,
+    "src",
+    "webview",
+    "panel.html",
+  );
 
-	const filePath = path.join(
-		context.extensionPath,
-		'src',
-		'webview',
-		'panel.html'
-	);
+  const stylePath = vscode.Uri.file(
+    path.join(context.extensionPath, "src", "webview", "styles.css"),
+  );
 
-		const stylePath = vscode.Uri.file(
-		path.join(
-			context.extensionPath,
-			'src',
-			'webview',
-			'styles.css'
-		)
-	);
+  const styleUri = webview.asWebviewUri(stylePath);
 
-	const styleUri =
-		webview.asWebviewUri(stylePath);
+  console.log("WEBVIEW PATH:", filePath);
 
-	console.log(
-		'WEBVIEW PATH:',
-		filePath
-	);
+  let html: string;
 
-	let html: string;
+  try {
+    html = fs.readFileSync(filePath, "utf8");
+  } catch (err) {
+    console.error("FILE READ ERROR:", err);
 
-	try {
-
-		html = fs.readFileSync(
-			filePath,
-			'utf8'
-		);
-
-	}
-	catch (err) {
-
-		console.error(
-			'FILE READ ERROR:',
-			err
-		);
-
-		return `
+    return `
 			<h2>File load failed</h2>
 			<pre>${filePath}</pre>
 		`;
-	}
+  }
 
-	// 🔹 Dynamic Panel Titles
-	let panelTitle =
-		'🧠 AI Response';
+  // 🔹 Dynamic Panel Titles
+  let panelTitle = "🧠 AI Response";
 
-	if (mode === 'explain') {
+  let badge = "AI ANALYSIS";
 
-		panelTitle =
-			'💡 Code Explanation';
-	}
+  if (mode === "explain") {
+    panelTitle = "💡 Code Explanation";
 
-	else if (
-		mode === 'explainFull'
-	) {
+    badge = "SOURCE";
+  } else if (mode === "explainFull") {
+    panelTitle = "📘 Deep Explanation";
 
-		panelTitle =
-			'📘 Deep Explanation';
-	}
+    badge = "DEEP ANALYSIS";
+  } else if (mode === "refactor") {
+    panelTitle = "✨ Refactor Suggestions";
 
-	else if (
-		mode === 'refactor'
-	) {
+    badge = "REFACTOR";
+  } else if (mode === "fix") {
+    panelTitle = "🐞 Bug Analysis";
 
-		panelTitle =
-			'✨ Refactor Suggestions';
-	}
+    badge = "BUG ANALYSIS";
+  } else if (mode === "optimize") {
+    panelTitle = "⚡ Optimization Review";
 
-	else if (
-		mode === 'fix'
-	) {
+    badge = "OPTIMIZATION";
+  }
 
-		panelTitle =
-			'🐞 Bug Analysis';
-	}
+  // 🔹 Dynamic Subtitles
+  let panelSubtitle = "AI-assisted development workflow";
 
-	else if (
-		mode === 'optimize'
-	) {
+  if (mode === "explain") {
+    panelSubtitle = "Quick conceptual explanation of the selected code.";
+  } else if (mode === "explainFull") {
+    panelSubtitle =
+      "Deep walkthrough with educational breakdown and logic analysis.";
+  } else if (mode === "refactor") {
+    panelSubtitle = "Code structure and readability improvement suggestions.";
+  } else if (mode === "fix") {
+    panelSubtitle = "Potential issue detection and correction analysis.";
+  } else if (mode === "optimize") {
+    panelSubtitle = "Performance and readability optimization review.";
+  }
 
-		panelTitle =
-			'⚡ Optimization Review';
-	}
+  // 🔹 Escape code safely
+  const safeCode = code
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 
-	// 🔹 Dynamic Subtitles
-	let panelSubtitle =
-		'AI-assisted development workflow';
+  // 🔹 Render markdown response
+  const safeResponse = md.render(`
+## AI Engineering Analysis
 
-	if (mode === 'explain') {
+${response}
 
-		panelSubtitle =
-			'Quick conceptual explanation of the selected code.';
-	}
+---
 
-	else if (
-		mode === 'explainFull'
-	) {
+### ⚠️ Important
 
-		panelSubtitle =
-			'Deep walkthrough with educational breakdown and logic analysis.';
-	}
+AI suggestions should be reviewed before applying to production systems.
+`);
 
-	else if (
-		mode === 'refactor'
-	) {
+  html = html.replace(/{{code}}/g, safeCode);
 
-		panelSubtitle =
-			'Code structure and readability improvement suggestions.';
-	}
+  html = html.replace(/{{response}}/g, safeResponse);
 
-	else if (
-		mode === 'fix'
-	) {
+  html = html.replace(/{{panelTitle}}/g, panelTitle);
 
-		panelSubtitle =
-			'Potential issue detection and correction analysis.';
-	}
+  html = html.replace(/{{panelSubtitle}}/g, panelSubtitle);
 
-	else if (
-		mode === 'optimize'
-	) {
+  html = html.replace(/{{badge}}/g, badge);
 
-		panelSubtitle =
-			'Performance and readability optimization review.';
-	}
+  html = html.replace("{{styleUri}}", styleUri.toString());
 
-	// 🔹 Escape code safely
-	const safeCode = code
-		.replace(/&/g, '&amp;')
-		.replace(/</g, '&lt;')
-		.replace(/>/g, '&gt;');
-
-	// 🔹 Render markdown response
-	const safeResponse =
-		md.render(response);
-
-	html = html.replace(
-		/{{code}}/g,
-		safeCode
-	);
-
-	html = html.replace(
-		/{{response}}/g,
-		safeResponse
-	);
-
-	html = html.replace(
-		/{{panelTitle}}/g,
-		panelTitle
-	);
-
-	html = html.replace(
-		/{{panelSubtitle}}/g,
-		panelSubtitle
-	);
-
-	html = html.replace(
-		'{{styleUri}}',
-		styleUri.toString()
-	);
-
-	return html;
+  return html;
 }
 
 // 🔹 Reusable Panel Function
 export function showPanel(
-	context: vscode.ExtensionContext,
-	response: string,
-	code: string,
-	mode: string
+  context: vscode.ExtensionContext,
+  response: string,
+  code: string,
+  mode: string,
 ) {
+  // ✅ Reuse existing panel
+  if (currentPanel) {
+    currentPanel.reveal(vscode.ViewColumn.Beside);
 
-	// ✅ Reuse existing panel
-	if (currentPanel) {
+    currentPanel.webview.html = getWebviewContent(
+      context,
+      currentPanel.webview,
+      response,
+      code,
+      mode,
+    );
 
-		currentPanel.reveal(
-			vscode.ViewColumn.Beside
-		);
+    return;
+  }
 
-		currentPanel.webview.html =
-			getWebviewContent(
-				context,
-				currentPanel.webview,
-				response,
-				code,
-				mode
-			);
+  // ✅ Create new panel only once
+  currentPanel = vscode.window.createWebviewPanel(
+    "mundiCodeLensPanel",
+    "MundiCodeLens AI",
+    vscode.ViewColumn.Beside,
+    {
+      enableScripts: true,
+    },
+  );
 
-		return;
-	}
+  currentPanel.webview.html = getWebviewContent(
+    context,
+    currentPanel.webview,
+    response,
+    code,
+    mode,
+  );
 
-	// ✅ Create new panel only once
-	currentPanel =
-		vscode.window.createWebviewPanel(
-			'mundiCodeLensPanel',
-			'MundiCodeLens AI',
-			vscode.ViewColumn.Beside,
-			{
-				enableScripts: true
-			}
-		);
-
-	currentPanel.webview.html =
-		getWebviewContent(
-			context,
-			currentPanel.webview,
-			response,
-			code,
-			mode
-		);
-
-	// ✅ Cleanup when closed
-	currentPanel.onDidDispose(() => {
-
-		currentPanel = undefined;
-
-	});
+  // ✅ Cleanup when closed
+  currentPanel.onDidDispose(() => {
+    currentPanel = undefined;
+  });
 }

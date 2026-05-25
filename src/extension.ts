@@ -1,44 +1,49 @@
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
-import { MundiCodeLensProvider } from './providers/CodeLensProvider';
+import { MundiCodeLensProvider } from "./providers/CodeLensProvider";
 
-import { registerExplainCommand } from './commands/explain';
-import { registerExplainFullCommand } from './commands/explainFull';
-import { registerRefactorCommand } from './commands/refactor';
-import { registerFixBugCommand } from './commands/fixBug';
-import { registerOptimizeCommand } from './commands/optimize';
+import { registerExplainCommand } from "./commands/explain";
+
+import { registerExplainFullCommand } from "./commands/explainFull";
+
+import { registerRefactorCommand } from "./commands/refactor";
+
+import { registerFixBugCommand } from "./commands/fixBug";
+
+import { registerOptimizeCommand } from "./commands/optimize";
+
+import { registerImplementCommand } from "./commands/implement";
 
 // 🔹 Extension Activation
-export function activate(
-	context: vscode.ExtensionContext
-) {
 
-	console.log(
-		'🚨 ACTIVATE STARTED 🚨'
-	);
+export function activate(context: vscode.ExtensionContext) {
+  console.log("🚨 ACTIVATE STARTED 🚨");
 
-	registerExplainCommand(context);
+  registerExplainCommand(context);
 
-	registerExplainFullCommand(context);
+  registerExplainFullCommand(context);
 
-	registerRefactorCommand(context);
+  registerRefactorCommand(context);
 
-	registerFixBugCommand(context);
+  registerFixBugCommand(context);
 
-	registerOptimizeCommand(context);
+  registerOptimizeCommand(context);
 
-	const provider =
-		new MundiCodeLensProvider();
+  registerImplementCommand(context);
 
-	context.subscriptions.push(
-		vscode.languages.registerCodeLensProvider(
-			{
-				scheme: 'file',
-				language: '*'
-			},
-			provider
-		)
-	);
+  const provider = new MundiCodeLensProvider();
+
+  context.subscriptions.push(
+    vscode.languages.registerCodeLensProvider(
+      {
+        scheme: "file",
+
+        language: "*",
+      },
+
+      provider,
+    ),
+  );
 }
 
 export function deactivate() {}
