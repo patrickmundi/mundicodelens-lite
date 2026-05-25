@@ -1,5 +1,3 @@
-import chokidar, { FSWatcher } from "chokidar";
-
 import { GraphSyncService } from "./graph-sync-service";
 
 export interface RepositoryWatchServiceOptions {
@@ -11,7 +9,7 @@ export interface RepositoryWatchServiceOptions {
 export class RepositoryWatchService {
   private readonly graphSyncService: GraphSyncService;
 
-  private watcher: FSWatcher | null = null;
+  private watcher: any = null;
 
   constructor(options: RepositoryWatchServiceOptions) {
     this.graphSyncService = new GraphSyncService({
@@ -25,12 +23,16 @@ export class RepositoryWatchService {
    * Starts repository watching and
    * keeps the graph synchronized in real time.
    */
-  public start(): void {
+  public async start(): Promise<void> {
     if (this.watcher) {
       console.warn("[RepositoryWatchService] Watcher already running.");
 
       return;
     }
+
+    const chokidarModule = await import("chokidar");
+
+    const chokidar = chokidarModule.default || chokidarModule;
 
     this.watcher = chokidar.watch(this.getWatchPatterns(), {
       ignored: this.getIgnoredPatterns(),
@@ -39,25 +41,25 @@ export class RepositoryWatchService {
     });
 
     this.watcher
-      .on("add", (filePath) => {
+      .on("add", (filePath: string) => {
         console.log(`[RepositoryWatchService] File added: ${filePath}`);
 
         this.synchronizeGraph();
       })
 
-      .on("change", (filePath) => {
+      .on("change", (filePath: string) => {
         console.log(`[RepositoryWatchService] File changed: ${filePath}`);
 
         this.synchronizeGraph();
       })
 
-      .on("unlink", (filePath) => {
+      .on("unlink", (filePath: string) => {
         console.log(`[RepositoryWatchService] File removed: ${filePath}`);
 
         this.synchronizeGraph();
       })
 
-      .on("error", (error) => {
+      .on("error", (error: unknown) => {
         console.error("[RepositoryWatchService] Watcher error:", error);
       });
 
