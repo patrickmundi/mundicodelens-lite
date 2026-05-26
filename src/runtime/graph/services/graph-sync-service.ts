@@ -1,3 +1,5 @@
+import path from "path";
+
 import { GraphBuilder } from "../builder/graph-builder";
 
 import { GraphCache } from "../storage/graph-cache";
@@ -7,7 +9,9 @@ import type { RepositoryGraph } from "../models/repository-graph";
 
 export interface GraphSyncServiceOptions {
   rootPath: string;
-  storagePath: string;
+
+  storagePath?: string;
+
   tsConfigFilePath?: string;
 }
 
@@ -21,11 +25,24 @@ export class GraphSyncService {
   constructor(options: GraphSyncServiceOptions) {
     this.graphBuilder = new GraphBuilder({
       rootPath: options.rootPath,
+
       tsConfigFilePath: options.tsConfigFilePath,
     });
 
+    /**
+     * Default persistent graph storage path.
+     */
+    const storagePath =
+      options.storagePath ??
+      path.resolve(
+        options.rootPath,
+        ".mundicodelens",
+        "graph",
+        "repository-graph.json",
+      );
+
     this.graphStore = new GraphStore({
-      storagePath: options.storagePath,
+      storagePath,
     });
 
     this.graphCache = new GraphCache();
@@ -92,8 +109,11 @@ export class GraphSyncService {
    */
   public getStats(): {
     hasGraph: boolean;
+
     nodeCount: number;
+
     edgeCount: number;
+
     updatedAt?: Date;
   } {
     return this.graphCache.getStats();

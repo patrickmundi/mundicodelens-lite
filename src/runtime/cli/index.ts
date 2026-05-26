@@ -77,3 +77,5 @@ bootstrapCLI().catch((error) => {
 
   process.exit(1);
 });
+
+// LIVE WATCH TEST

@@ -2,7 +2,9 @@ import { GraphSyncService } from "./graph-sync-service";
 
 export interface RepositoryWatchServiceOptions {
   rootPath: string;
+
   storagePath: string;
+
   tsConfigFilePath?: string;
 }
 
@@ -14,16 +16,20 @@ export class RepositoryWatchService {
   constructor(options: RepositoryWatchServiceOptions) {
     this.graphSyncService = new GraphSyncService({
       rootPath: options.rootPath,
+
       storagePath: options.storagePath,
+
       tsConfigFilePath: options.tsConfigFilePath,
     });
   }
 
   /**
-   * Starts repository watching and
-   * keeps the graph synchronized in real time.
+   * Starts repository watching
+   * and keeps graph synchronized.
    */
-  public async start(): Promise<void> {
+  public async start(
+    onChange?: (changedFilePath: string) => Promise<void> | void,
+  ): Promise<void> {
     if (this.watcher) {
       console.warn("[RepositoryWatchService] Watcher already running.");
 
@@ -35,28 +41,42 @@ export class RepositoryWatchService {
     const chokidar = chokidarModule.default || chokidarModule;
 
     this.watcher = chokidar.watch(this.getWatchPatterns(), {
-      ignored: this.getIgnoredPatterns(),
+      ignored: [...this.getIgnoredPatterns(), /(^|[\/\\])\../],
+
       persistent: true,
-      ignoreInitial: false,
+
+      ignoreInitial: true,
+
+      awaitWriteFinish: {
+        stabilityThreshold: 200,
+
+        pollInterval: 100,
+      },
     });
 
     this.watcher
-      .on("add", (filePath: string) => {
+      .on("add", async (filePath: string) => {
         console.log(`[RepositoryWatchService] File added: ${filePath}`);
 
         this.synchronizeGraph();
+
+        await onChange?.(filePath);
       })
 
-      .on("change", (filePath: string) => {
+      .on("change", async (filePath: string) => {
         console.log(`[RepositoryWatchService] File changed: ${filePath}`);
 
         this.synchronizeGraph();
+
+        await onChange?.(filePath);
       })
 
-      .on("unlink", (filePath: string) => {
+      .on("unlink", async (filePath: string) => {
         console.log(`[RepositoryWatchService] File removed: ${filePath}`);
 
         this.synchronizeGraph();
+
+        await onChange?.(filePath);
       })
 
       .on("error", (error: unknown) => {
@@ -69,7 +89,7 @@ export class RepositoryWatchService {
   }
 
   /**
-   * Stops repository watching.
+   * Stops repository watcher.
    */
   public async stop(): Promise<void> {
     if (!this.watcher) {
@@ -84,14 +104,14 @@ export class RepositoryWatchService {
   }
 
   /**
-   * Returns the active graph sync service.
+   * Returns active graph sync service.
    */
   public getGraphSyncService(): GraphSyncService {
     return this.graphSyncService;
   }
 
   /**
-   * Triggers graph synchronization.
+   * Synchronizes graph state.
    */
   private synchronizeGraph(): void {
     try {
@@ -109,14 +129,14 @@ export class RepositoryWatchService {
   }
 
   /**
-   * Returns repository watch patterns.
+   * Repository watch patterns.
    */
   private getWatchPatterns(): string[] {
-    return ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"];
+    return [process.cwd()];
   }
 
   /**
-   * Returns ignored repository patterns.
+   * Ignored repository patterns.
    */
   private getIgnoredPatterns(): string[] {
     return [
