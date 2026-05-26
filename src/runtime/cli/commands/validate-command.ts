@@ -1,9 +1,8 @@
 import { GraphBuilder } from "../../graph/builder/graph-builder";
 
-import {
-  ArchitectureQuery,
-  ArchitectureRule,
-} from "../../graph/queries/architecture-query";
+import { ArchitectureQuery } from "../../graph/queries/architecture-query";
+
+import type { ArchitectureRule } from "../../graph/queries/architecture-query";
 
 export interface ValidateCommandOptions {
   rootPath: string;

@@ -1,4 +1,4 @@
-import path from "path";
+import path, { resolve } from "path";
 
 import { runScanCommand } from "./commands/scan-command";
 
@@ -7,6 +7,8 @@ import { runImpactCommand } from "./commands/impact-command";
 import { runValidateCommand } from "./commands/validate-command";
 
 import { runWatchCommand } from "./commands/watch-command";
+
+import { runMutationCommand } from "./commands/mutation-command";
 
 async function bootstrapCLI(): Promise<void> {
   const args = process.argv.slice(2);
@@ -55,6 +57,15 @@ async function bootstrapCLI(): Promise<void> {
 
       break;
 
+    case "mutate":
+      await runMutationCommand({
+        rootPath,
+
+        tsConfigFilePath,
+      });
+
+      break;
+
     default:
       console.log("[MundiCodeLens CLI] Unknown command.\n");
 
@@ -70,6 +81,7 @@ async function bootstrapCLI(): Promise<void> {
 
       process.exit(1);
   }
+    console.log("[AST Mutation] Semantic runtime active.");
 }
 
 bootstrapCLI().catch((error) => {
@@ -79,3 +91,7 @@ bootstrapCLI().catch((error) => {
 });
 
 // LIVE WATCH TEST
+
+// Mutation runtime test
+// AI mutation planner appended comment
+// AI mutation planner appended comment

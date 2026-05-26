@@ -52,7 +52,8 @@
     "graph:scan": "tsx src/runtime/cli/index.ts scan",
     "graph:impact": "tsx src/runtime/cli/index.ts impact",
     "graph:validate": "tsx src/runtime/cli/index.ts validate",
-    "graph:watch": "tsx src/runtime/cli/index.ts watch"
+    "graph:watch": "tsx src/runtime/cli/index.ts watch",
+    "graph:mutate": "tsx src/runtime/cli/index.ts mutate"
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.2",

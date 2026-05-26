@@ -1,4 +1,4 @@
-import path from "path";
+import path, { resolve } from "path";
 
 import { GraphBuilder } from "../../graph/builder/graph-builder";
 
@@ -79,6 +79,7 @@ export async function runImpactCommand(
   console.log(`Total affected nodes: ${result.totalAffectedNodes}`);
 
   console.log("\n[MundiCodeLens CLI] Impact analysis finished.\n");
+    console.log("[AST Mutation] Semantic runtime active.");
 }
 
 /**
@@ -88,3 +89,6 @@ export async function runImpactCommand(
 function normalizePath(filePath: string): string {
   return path.normalize(filePath).replace(/\\/g, "/");
 }
+
+// AI mutation planner appended comment
+// AI mutation planner appended comment
