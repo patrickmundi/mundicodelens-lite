@@ -8,6 +8,10 @@ import { SemanticTargetingService } from "../../mutation/services/semantic-targe
 
 import { FunctionTargetingService } from "../../mutation/services/function-targeting-service";
 
+import { MutationIntentService } from "../../mutation/services/mutation-intent-service";
+
+import { IntentMutationStrategyService } from "../../mutation/services/intent-mutation-strategy-service";
+
 export interface MutationCommandOptions {
   rootPath: string;
 
@@ -33,12 +37,6 @@ export async function runMutationCommand(
     tsConfigFilePath: options.tsConfigFilePath,
   });
 
-  /**
-   * Target file for semantic mutation.
-   */
-  /**
-   * Target file for semantic mutation.
-   */
   /**
    * Initialize semantic targeting service.
    */
@@ -97,6 +95,47 @@ export async function runMutationCommand(
   );
 
   /**
+   * Initialize mutation intent service.
+   */
+  const mutationIntentService = new MutationIntentService();
+
+  /**
+   * Analyze engineering intent.
+   */
+  const intentAnalysis = mutationIntentService.analyzeIntent("add logging");
+
+  console.log("[MundiCodeLens CLI] Intent analysis completed.\n");
+
+  console.log("Intent Type:", intentAnalysis.type);
+
+  console.log("Intent Confidence:", intentAnalysis.confidence);
+
+  console.log("Intent Reasoning:", intentAnalysis.reasoning);
+
+  /**
+   * Initialize strategy service.
+   */
+  const intentMutationStrategyService = new IntentMutationStrategyService();
+
+  /**
+   * Generate mutation strategy.
+   */
+  const mutationStrategy =
+    intentMutationStrategyService.generateStrategy(intentAnalysis);
+
+  if (!mutationStrategy.success) {
+    console.error("[MundiCodeLens CLI] Mutation strategy generation failed.");
+
+    console.log("Warnings:", mutationStrategy.warnings);
+
+    return;
+  }
+
+  console.log("\n[MundiCodeLens CLI] Mutation strategy generated.\n");
+
+  console.log("Strategy Reasoning:", mutationStrategy.reasoning);
+
+  /**
    * Generate AI patch mutation plan.
    */
   const mutationPlan = aiMutationPlanner.generatePlan({
@@ -125,23 +164,11 @@ export async function runMutationCommand(
 
     patches: mutationPlan.patches,
 
-    astMutations: [
-      {
-        type: "append-statement",
+    astMutations: mutationStrategy.astMutations.map((mutation) => ({
+      ...mutation,
 
-        targetFunctionName: targetFunction.functionName,
-
-        statement: 'console.log("[AST Mutation] Semantic runtime active.");',
-      },
-
-      {
-        type: "add-import",
-
-        moduleSpecifier: "path",
-
-        namedImports: ["resolve"],
-      },
-    ],
+      targetFunctionName: targetFunction.functionName,
+    })),
   });
 
   console.log("\n[MundiCodeLens CLI] Mutation execution completed.\n");

@@ -80,6 +80,7 @@ export async function runImpactCommand(
 
   console.log("\n[MundiCodeLens CLI] Impact analysis finished.\n");
     console.log("[AST Mutation] Semantic runtime active.");
+    console.log("[Runtime Logging] Engineering log injected.");
 }
 
 /**
@@ -90,5 +91,6 @@ function normalizePath(filePath: string): string {
   return path.normalize(filePath).replace(/\\/g, "/");
 }
 
+// AI mutation planner appended comment
 // AI mutation planner appended comment
 // AI mutation planner appended comment
