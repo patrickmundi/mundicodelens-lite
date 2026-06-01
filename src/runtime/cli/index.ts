@@ -264,9 +264,11 @@ async function bootstrapCLI(): Promise<void> {
       break;
 
     case "runtime:finance-cognition": {
-      const financeDomainCognition = new FinanceDomainCognitionCommand();
+      const dispatcher = new RuntimeCommandDispatcher();
 
-      financeDomainCognition.execute(rootPath);
+      registerRuntimeCommands(dispatcher, rootPath);
+
+      await dispatcher.dispatch(command);
 
       break;
     }
