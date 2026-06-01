@@ -253,9 +253,11 @@ async function bootstrapCLI(): Promise<void> {
 
     case "runtime:django-endpoints":
       {
-        const endpointCognition = new DjangoEndpointCognitionCommand();
+        const dispatcher = new RuntimeCommandDispatcher();
 
-        endpointCognition.execute(rootPath);
+        registerRuntimeCommands(dispatcher, rootPath);
+
+        await dispatcher.dispatch(command);
 
         break;
       }
