@@ -265,9 +265,15 @@ async function bootstrapCLI(): Promise<void> {
       break;
 
     case "runtime:infer-dashboards":
-      await runDashboardTopologyCommand({
-        rootPath,
-      });
+      {
+        const dispatcher = new RuntimeCommandDispatcher();
+
+        registerRuntimeCommands(dispatcher, rootPath);
+
+        await dispatcher.dispatch(command);
+
+        break;
+      }
 
       break;
 
