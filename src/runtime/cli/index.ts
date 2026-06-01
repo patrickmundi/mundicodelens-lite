@@ -231,9 +231,15 @@ async function bootstrapCLI(): Promise<void> {
       break;
 
     case "runtime:django-cognition":
-      await runDjangoCognitionCommand({
-        rootPath,
-      });
+      {
+        const dispatcher = new RuntimeCommandDispatcher();
+
+        registerRuntimeCommands(dispatcher, rootPath);
+
+        await dispatcher.dispatch(command);
+
+        break;
+      }
 
       break;
 
