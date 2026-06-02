@@ -1,4 +1,4 @@
-import { CodexImplementationCandidate } from "../../providers/codex/codex-delegation-service";
+import { CodexImplementationCandidate } from "../../providers/codex-delegation-service";
 
 export interface RankedImplementationCandidate extends CodexImplementationCandidate {
   architectureScore: number;

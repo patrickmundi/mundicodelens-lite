@@ -12,6 +12,7 @@ import { MutationIntentService } from "../../mutation/services/mutation-intent-s
 
 import { IntentMutationStrategyService } from "../../mutation/services/intent-mutation-strategy-service";
 
+import type { ASTMutationInstruction } from "../../mutation/engines/ast-mutation-engine";
 export interface MutationCommandOptions {
   rootPath: string;
 
@@ -164,11 +165,27 @@ export async function runMutationCommand(
 
     patches: mutationPlan.patches,
 
-    astMutations: mutationStrategy.astMutations.map((mutation) => ({
-      ...mutation,
+    astMutations: mutationStrategy.astMutations.map(
+      (mutation): ASTMutationInstruction => {
+        if (mutation.type === "append-statement") {
+          return {
+            type: "append-statement",
 
-      targetFunctionName: targetFunction.functionName,
-    })),
+            targetFunctionName: targetFunction.functionName,
+
+            statement: mutation.statement ?? "",
+          };
+        }
+
+        return {
+          type: "add-import",
+
+          moduleSpecifier: mutation.moduleSpecifier ?? "",
+
+          namedImports: mutation.namedImports ?? [],
+        };
+      },
+    ),
   });
 
   console.log("\n[MundiCodeLens CLI] Mutation execution completed.\n");

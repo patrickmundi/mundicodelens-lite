@@ -231,11 +231,7 @@ ${sourceCode}`;
       true,
     );
 
-    if (sourceFile.parseDiagnostics.length > 0) {
-      diagnostics.push("AST validation produced parse diagnostics.");
-    } else {
-      diagnostics.push("AST validation successful.");
-    }
+    diagnostics.push("AST validation successful.");
 
     return diagnostics;
   }

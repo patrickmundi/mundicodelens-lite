@@ -1,14 +1,13 @@
-import { MutationIntentService } from "../../mutation/services/mutation-intent-service";
+import { MutationIntentService } from "../mutation/services/mutation-intent-service";
 
-import { IntentMutationStrategyService } from "../../mutation/services/intent-mutation-strategy-service";
+import { IntentMutationStrategyService } from "../mutation/services/intent-mutation-strategy-service";
 
-import { MutationSafetyService } from "../../mutation/services/mutation-safety-service";
+import { MutationSafetyService } from "../mutation/services/mutation-safety-service";
 
 import {
   MutationRollbackService,
   MutationSnapshot,
-} from "../../mutation/services/mutation-rollback-service";
-
+} from "../mutation/services/mutation-rollback-service";
 export interface AutonomousEngineeringRequest {
   intent: string;
 

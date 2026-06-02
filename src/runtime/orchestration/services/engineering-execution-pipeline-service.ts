@@ -1,6 +1,6 @@
 import { EngineeringPlanningService } from "./engineering-planning-service";
 
-import { EngineeringPolicyService } from "../../governance/services/engineering-policy-service";
+import { EngineeringPolicyService } from "../../governance/engineering-policy-service";
 
 import {
   MutationRollbackService,
@@ -10,8 +10,7 @@ import {
 import {
   EngineeringMemoryService,
   EngineeringMemoryRecord,
-} from "./engineering-memory-service";
-
+} from "../engineering-memory-service";
 export interface EngineeringExecutionPipelineRequest {
   goal: string;
 

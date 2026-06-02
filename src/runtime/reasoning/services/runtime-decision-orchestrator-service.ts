@@ -2,8 +2,7 @@ import {
   RuntimeReasoningEngineService,
   RuntimeReasoningContext,
   RuntimeDecision,
-} from "./runtime-reasoning-engine-service";
-
+} from "../runtime-reasoning-engine-service";
 export interface RuntimeExecutionCandidate {
   id: string;
 

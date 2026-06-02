@@ -36,6 +36,14 @@ import { RuntimeCommandDispatcher } from "./runtime-command-dispatcher";
 
 import { registerRuntimeCommands } from "./command-registration";
 
+import { showRuntimeHelpMenu } from "./runtime-help-menu";
+
+import { buildRuntimeBootstrap } from "../bootstrap/runtime-bootstrap";
+
+import { AutonomousEngineeringJudgmentService } from "../reasoning/services/autonomous-engineering-judgment-service";
+
+import { AutonomousExecutionSimulationService } from "../reasoning/services/autonomous-execution-simulation-service";
+
 import { ApiContractReconciliationCommand } from "../cognition/domain/api-contract-reconciliation-command";
 
 import { RepositoryGraphScannerService } from "../scanning/services/repository-graph-scanner-service";
@@ -109,66 +117,81 @@ async function bootstrapCLI(): Promise<void> {
   /**
    * Core cognition services.
    */
-  const repositoryCognition = new RepositoryCognitionService();
 
-  const governanceCognition = new MutationGovernanceCognitionService();
+  // const repositoryCognition = new RepositoryCognitionService();
 
-  const memoryCognition = new RepositoryEvolutionMemoryService();
+  // const governanceCognition = new MutationGovernanceCognitionService(
+  //   repositoryCognition,
+  // );
 
-  const learningCognition = new AutonomousEngineeringLearningService();
+  // const memoryCognition = new RepositoryEvolutionMemoryService();
 
-  const intentCognition = new EngineeringIntentCognitionService();
+  // const learningCognition = new AutonomousEngineeringLearningService(
+  //   memoryCognition,
+  // );
 
-  const semanticExecution = new SemanticExecutionOrchestratorService();
+  // const intentCognition = new EngineeringIntentCognitionService();
 
-  const unifiedCognition = new UnifiedEngineeringCognitionService(
-    repositoryCognition,
-    governanceCognition,
-    memoryCognition,
-    learningCognition,
-    intentCognition,
-  );
+  // const simulationService = new AutonomousExecutionSimulationService();
 
-  /**
-   * Integration orchestration.
-   */
-  const integrationOrchestrator = new CognitionIntegrationOrchestratorService(
-    repositoryCognition,
-    governanceCognition,
-    memoryCognition,
-    learningCognition,
-    intentCognition,
-    unifiedCognition,
-    semanticExecution,
-  );
+  // const judgmentCognition = new AutonomousEngineeringJudgmentService(
+  //   simulationService,
+  // );
 
-  /**
-   * Runtime infrastructure.
-   */
-  const repositoryScanner = new RepositoryGraphScannerService();
+  // const semanticExecution = new SemanticExecutionOrchestratorService();
 
-  const astTransformation = new TypeScriptASTTransformationService();
+  // const unifiedCognition = new UnifiedEngineeringCognitionService(
+  //   repositoryCognition,
+  //   governanceCognition,
+  //   judgmentCognition,
+  //   memoryCognition,
+  //   learningCognition,
+  // );
 
-  const transactionManager = new RepositoryMutationTransactionService();
+  // /*
+  //  * Integration orchestration.
+  //  */
+  // const integrationOrchestrator = new CognitionIntegrationOrchestratorService(
+  //   repositoryCognition,
+  //   governanceCognition,
+  //   memoryCognition,
+  //   learningCognition,
+  //   intentCognition,
+  //   unifiedCognition,
+  //   semanticExecution,
+  // );
 
-  const evolutionPipeline = new AutonomousRepositoryEvolutionPipelineService();
+  // /**
+  //  * Runtime infrastructure.
+  //  */
+  // const repositoryScanner = new RepositoryGraphScannerService();
 
-  const dryRunService = new AutonomousEvolutionDryRunService();
+  // const astTransformation = new TypeScriptASTTransformationService();
 
-  const telemetry = new RuntimeCognitionTelemetryService();
+  // const transactionManager = new RepositoryMutationTransactionService();
 
-  /**
-   * Runtime command center.
-   */
-  const commandCenter = new AutonomousRuntimeCommandCenterService(
-    repositoryScanner,
-    astTransformation,
-    transactionManager,
-    evolutionPipeline,
-    dryRunService,
-    telemetry,
-    integrationOrchestrator,
-  );
+  // const evolutionPipeline = new AutonomousRepositoryEvolutionPipelineService();
+
+  // const dryRunService = new AutonomousEvolutionDryRunService();
+
+  // const telemetry = new RuntimeCognitionTelemetryService();
+
+  // /**
+  //  * Runtime command center.
+  //  */
+  // const commandCenter = new AutonomousRuntimeCommandCenterService(
+  //   repositoryScanner,
+  //   astTransformation,
+  //   transactionManager,
+  //   evolutionPipeline,
+  //   dryRunService,
+  //   telemetry,
+  //   integrationOrchestrator,
+  // );
+
+  const runtime = buildRuntimeBootstrap();
+
+  const commandCenter = runtime.commandCenter;
 
   switch (command) {
     case "scan":
@@ -213,12 +236,22 @@ async function bootstrapCLI(): Promise<void> {
       break;
 
     case "runtime:scan":
-      console.log(commandCenter.runRepositoryScan(rootPath));
+      console.log(
+        commandCenter.executeCommand({
+          command: "SCAN_REPOSITORY",
+          repositoryPath: rootPath,
+        }),
+      );
 
       break;
 
     case "runtime:dry-run":
-      console.log(commandCenter.runDryRun(rootPath));
+      console.log(
+        commandCenter.executeCommand({
+          command: "DRY_RUN",
+          repositoryPath: rootPath,
+        }),
+      );
 
       break;
 

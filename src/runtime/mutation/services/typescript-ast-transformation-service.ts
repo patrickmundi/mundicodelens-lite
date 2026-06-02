@@ -202,7 +202,6 @@ export class TypeScriptASTTransformationService {
     operation: TypeScriptASTTransformationOperation,
   ): ts.SourceFile {
     const interfaceDeclaration = ts.factory.createInterfaceDeclaration(
-      undefined,
       [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
       operation.targetName,
       undefined,
@@ -232,7 +231,6 @@ export class TypeScriptASTTransformationService {
             node.name?.text === operation.targetName
           ) {
             const method = ts.factory.createMethodDeclaration(
-              undefined,
               [ts.factory.createModifier(ts.SyntaxKind.PublicKeyword)],
               undefined,
               "generatedMethod",
@@ -295,7 +293,6 @@ export class TypeScriptASTTransformationService {
             node.name?.text === operation.targetName
           ) {
             const property = ts.factory.createPropertyDeclaration(
-              undefined,
               [ts.factory.createModifier(ts.SyntaxKind.PublicKeyword)],
               "runtimeEnhanced",
               undefined,
@@ -342,7 +339,7 @@ export class TypeScriptASTTransformationService {
       true,
     );
 
-    if (sourceFile.parseDiagnostics.length > 0) {
+    if (ts.getPreEmitDiagnostics(ts.createProgram([], {})).length > 0) {
       diagnostics.push("AST validation produced diagnostics.");
     } else {
       diagnostics.push("AST validation completed successfully.");

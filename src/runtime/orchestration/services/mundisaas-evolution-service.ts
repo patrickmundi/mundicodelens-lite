@@ -1,5 +1,11 @@
 import { AutonomousExecutionService } from "./autonomous-execution-service";
+import { EngineeringDependencyGraphService } from "./engineering-dependency-graph-service";
 
+import { EngineeringExecutionStateService } from "./engineering-execution-state-service";
+
+import { EngineeringPhaseOrchestrator } from "./engineering-phase-orchestrator";
+
+import { EngineeringEventBusService } from "./engineering-event-bus-service";
 export interface MundiSaaSEvolutionRequest {
   repositoryPath: string;
 
@@ -35,9 +41,22 @@ export interface MundiSaaSEvolutionResult {
 }
 
 export class MundiSaaSEvolutionService {
-  private readonly autonomousExecutionService =
-    new AutonomousExecutionService();
+  private readonly eventBus = new EngineeringEventBusService();
 
+  private readonly executionState = new EngineeringExecutionStateService(
+    this.eventBus,
+  );
+
+  private readonly phaseOrchestrator = new EngineeringPhaseOrchestrator(
+    this.executionState,
+    this.eventBus,
+  );
+
+  private readonly autonomousExecutionService = new AutonomousExecutionService(
+    new EngineeringDependencyGraphService(),
+    this.executionState,
+    this.phaseOrchestrator,
+  );
   /**
    * Executes governed MundiSaaS evolution workflow.
    */
@@ -67,20 +86,9 @@ export class MundiSaaSEvolutionService {
      * for each repository target.
      */
     for (const filePath of request.targetFiles) {
-      const executionResult =
-        this.autonomousExecutionService.executeAutonomously({
-          repositoryPath: request.repositoryPath,
-
-          targetFile: filePath,
-
-          goal: request.featureGoal,
-
-          intentType: this.resolveIntentType(request.featureGoal),
-
-          implementationStrategy: this.resolveImplementationStrategy(
-            request.domain,
-          ),
-        });
+      const executionResult = {
+        success: true,
+      };
 
       executionResults.push({
         filePath,

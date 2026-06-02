@@ -25,7 +25,11 @@ export async function runScanCommand(
 
   console.log(`Edges: ${graph.edges.length}`);
 
-  console.log(`Last scanned: ${graph.metadata.lastScannedAt.toISOString()}`);
+  console.log(
+    `Last scanned: ${
+      graph.metadata?.lastScannedAt?.toISOString() ?? "Unknown"
+    }`,
+  );
 
   console.log("\n[MundiCodeLens CLI] Sample repository nodes:\n");
 
