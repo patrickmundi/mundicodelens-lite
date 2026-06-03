@@ -32,6 +32,11 @@ import { AutonomousEngineeringJudgmentService } from "../reasoning/services/auto
 
 import { AutonomousExecutionSimulationService } from "../reasoning/services/autonomous-execution-simulation-service";
 
+import { EngineeringCapabilityRegistryService } from "../system/services/engineering-capability-registry-service";
+
+import { RuntimeCapabilityRegistrationService } from "./runtime-capability-registration-service";
+
+import { EngineeringTelemetryService } from "../observability/services/engineering-telemetry-service";
 export interface RuntimeBootstrap {
   commandCenter: AutonomousRuntimeCommandCenterService;
 
@@ -56,6 +61,25 @@ export function buildRuntimeBootstrap(): RuntimeBootstrap {
   );
 
   const memoryCognition = new RepositoryEvolutionMemoryService();
+
+  /**
+   * Runtime capability infrastructure.
+   */
+  const capabilityRegistry = new EngineeringCapabilityRegistryService();
+
+  const telemetryService = new EngineeringTelemetryService();
+
+  const capabilityRegistration = new RuntimeCapabilityRegistrationService(
+    capabilityRegistry,
+  );
+
+  capabilityRegistration.registerCoreCapabilities();
+
+  telemetryService.recordEvent(
+    "CAPABILITY_REGISTERED",
+    "RuntimeBootstrap",
+    "Core runtime capabilities registered.",
+  );
 
   const learningCognition = new AutonomousEngineeringLearningService(
     memoryCognition,
@@ -107,6 +131,7 @@ export function buildRuntimeBootstrap(): RuntimeBootstrap {
     repositoryScanner,
     astTransformation,
   );
+
   const telemetry = new RuntimeCognitionTelemetryService(
     integrationOrchestrator,
     memoryCognition,
