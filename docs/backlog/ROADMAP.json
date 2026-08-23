@@ -1,0 +1,15 @@
+{
+  "project": "MundiCodeLens-Lite",
+  "version": "1.0",
+  "status": "Planning",
+  "epics": [
+    {
+      "id": "MCL-001",
+      "title": "MundiCodeLens-Lite Reconciliation Sprint",
+      "status": "Deferred",
+      "priority": "Critical",
+      "trigger": "Begin after Mundi Learning reaches operational launch.",
+      "description": "Reconcile MundiCodeLens-Lite with the current MundiSaaS architecture, engineering rules, and deployment workflow."
+    }
+  ]
+}
